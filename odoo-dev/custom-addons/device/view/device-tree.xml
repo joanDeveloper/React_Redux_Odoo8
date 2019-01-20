@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <openerp>
+        <data>
+	<record    id="view_form_todo_task" model="ir.ui.view">
+    <field name="name">Device Form</field>
+    <field name="model">list.device</field>
+    <field name="arch" type="xml">
+	<form>
+            <header>
+                <!--<button name="do_toggle_done" type="object" string="Toggle Done" class="oe_highlight" />
+                <button name="do_clear_done" type="object" string="Clear All Done" />-->
+            </header>
+            <sheet>
+                <group name="group_top">
+                    <group name="group_left">
+                        <field name="slug"/>
+                        <field name="model"/>
+                        <field name="description"/>
+                        <field name="price"/>
+                    </group>
+                    <group name="group_right">
+                        <field name="battery"/>
+                        <field name="brand"/>
+                        <field name="camera"/>
+                        <field name="media"/>
+                    </group>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+<record id="view_tree_list_device" model="ir.ui.view">
+    <field name="name">Device Tree</field>
+    <field name="model">list.device</field>
+    <field name="arch" type="xml">
+        <!--<tree colors="gray:is_done==True">-->
+        <tree>
+            <field name="slug"/>
+            <field name="model"/>
+            <field name="brand"/>
+            <field name="price"/>
+        </tree>
+    </field>
+</record>
+
+            <!-- Action to open Device -->
+            <act_window
+                id="action_device"
+                name="Device Form"
+                res_model="list.device"
+                view_mode="tree,form"
+            />
+            <!-- Menu item to open Device -->
+            <menuitem
+                id="menu_device"
+                name="Device Form"
+                parent="mail.mail_feeds"
+                sequence="20"
+                action="action_device"
+            />
+        </data>
+</openerp>
