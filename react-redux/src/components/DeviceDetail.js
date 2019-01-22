@@ -36,7 +36,15 @@ class Device extends React.Component {
                     this.props.device.map(device => {
                         console.log("MAPDEVICEDETAIL", device);
                         return (
-                            <p key={device.slug}>{device.price}</p>
+                            <section key={device.slug}>
+                                <p>Marca: {device.brand}</p>
+                                <p>Modelo: {device.model}</p>
+                                <p>Bateria: {device.battery} Mhz</p>
+                                <p>Camera: {device.camera} pixels</p>
+                                <p>Descripcion: {device.description}</p>
+                                <p>Precio: {device.price} €</p>
+                            </section>
+
                         )
                     })
                 }

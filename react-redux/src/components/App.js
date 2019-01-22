@@ -6,6 +6,7 @@ import { APP_LOAD, REDIRECT } from '../constants/actionTypes';
 import { Route, Switch } from 'react-router-dom';
 import Article from '../components/Article';
 import Device from '../components/DeviceDetail';
+import CategoriesPreview from '../components/CategoriesPreview';
 import Editor from '../components/Editor';
 import Home from '../components/Home';
 import Contact from '../components/Contact';
@@ -59,6 +60,7 @@ class App extends React.Component {
             currentUser={this.props.currentUser} />
             <Switch>
             <Route exact path="/" component={Home}/>
+            <Route exact path="/devices/category/:slug" component={CategoriesPreview}/>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/contact" component={Contact} />

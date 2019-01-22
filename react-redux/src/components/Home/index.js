@@ -1,4 +1,5 @@
 import Banner from './Banner';
+import Footer from './Footer';
 import MainView from './MainView';
 import React from 'react';
 //import Tags from './Tags';
@@ -47,9 +48,8 @@ class Home extends React.Component {
     const devicesPromise = this.props.token ?
       agent.Devices.feed :
       agent.Devices.all;
-
     //this.props.onLoad(tab, articlesPromise, Promise.all([agent.Tags.getAll(), articlesPromise()]));
-    this.props.onLoad(tab, devicesPromise, Promise.all([devicesPromise()]));
+    this.props.onLoad(tab, devicesPromise, Promise.all([devicesPromise(),agent.Categories.all()]));
   }
 
   componentWillUnmount() {
@@ -59,27 +59,13 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home-page">
-
         <Banner token={this.props.token} appName={this.props.appName} />
-
         <div className="container page">
           <div className="row">
             <MainView />
-
-            <div className="col-md-3">
-              <div className="sidebar">
-
-                <p>Popular Tags</p>
-
-                {/*<Tags
-                  tags={this.props.tags}
-                onClickTag={this.props.onClickTag} />*/}
-
-              </div>
-            </div>
           </div>
         </div>
-
+        <Footer appName={this.props.appName}/>
       </div>
     );
   }

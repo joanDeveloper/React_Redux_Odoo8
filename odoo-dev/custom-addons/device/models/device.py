@@ -8,8 +8,8 @@ _logger = logging.getLogger("device")
 
 class Device(models.Model):
     _name = 'list.device'
-    _inherit = 'mail.thread'
 
+    category_id = fields.Many2one('list.categories','id')
     slug = fields.Char('slug', required=True)
     model = fields.Char('model', required=True)
     description = fields.Char('description', required=True)

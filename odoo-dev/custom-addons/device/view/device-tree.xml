@@ -14,6 +14,7 @@
                 <group name="group_top">
                     <group name="group_left">
                         <field name="slug"/>
+                        <field name="category_id"/>
                         <field name="model"/>
                         <field name="description"/>
                         <field name="price"/>
@@ -36,6 +37,7 @@
         <!--<tree colors="gray:is_done==True">-->
         <tree>
             <field name="slug"/>
+            <field name="category_id"/>
             <field name="model"/>
             <field name="brand"/>
             <field name="price"/>

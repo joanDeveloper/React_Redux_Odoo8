@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <openerp>
+        <data>
+            <record    id="view_form_todo_task" model="ir.ui.view">
+                <field name="name">Categories Form</field>
+                <field name="model">list.categories</field>
+                <field name="arch" type="xml">
+                    <form>
+                            <header>
+                                <!--<button name="do_toggle_done" type="object" string="Toggle Done" class="oe_highlight" />
+                                <button name="do_clear_done" type="object" string="Clear All Done" />-->
+                            </header>
+                            <sheet>
+                                <group name="group_top">
+                                    <group name="group_left">
+                                        <field name="slug_category"/>
+                                        <field name="name"/>
+                                        <field name="description"/>
+                                    </group>
+                                </group>
+                            </sheet>
+                        </form>
+                </field>
+            </record>
+
+            <record id="view_tree_list_device" model="ir.ui.view">
+                <field name="name">Categories Tree</field>
+                <field name="model">list.categories</field>
+                <field name="arch" type="xml">
+                    <!--<tree colors="gray:is_done==True">-->
+                    <tree>
+                        <field name="slug_category"/>
+                        <field name="name"/>
+                    </tree>
+                </field>
+            </record>
+
+            <!-- Action to open Categories -->
+            <act_window
+                id="action_categories"
+                name="Categories Form"
+                res_model="list.categories"
+                view_mode="tree,form"/>
+            <!-- Menu item to open Categories -->
+            <menuitem
+                id="menu_categories"
+                name="Categories Form"
+                parent="mail.mail_feeds"
+                sequence="20"
+                action="action_categories"/>
+        </data>
+</openerp>

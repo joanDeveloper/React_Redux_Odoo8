@@ -18,6 +18,7 @@ import {
         return {
           ...state,
           pager: action.pager,
+          categories: action.payload[1].result,
           devices: action.payload[0].result.listDevices,
           devicesCount: action.payload[0].result.count,
           currentPage: 0,

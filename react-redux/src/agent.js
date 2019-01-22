@@ -54,7 +54,15 @@ const Devices = {
     requests.postOdoo('/device',{'offset': 0, 'limit': 10}),
   detail: slug =>
     requests.postOdoo('/device-detail', {"slug":slug}),
+  byCategory: (page,slug) =>
+    requests.postOdoo('/device-category', {'offset': page ? page * 10 : 0, 'limit': 10, 'slug':slug}),
 }
+
+const Categories = {
+  all: slug =>
+    requests.postOdoo('/categories',{"slug": slug ? slug : ""}),
+}
+
 const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`;
 
 const omitSlug = article => Object.assign({}, article, { slug: undefined })
@@ -104,6 +112,7 @@ const Profile = {
 export default {
   Articles,
   Devices,
+  Categories,
   Auth,
   Comments,
   Profile,

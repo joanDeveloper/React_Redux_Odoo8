@@ -1,4 +1,5 @@
 import DeviceList from '../DeviceList';
+import CategoriesList from '../CategoriesList';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -13,6 +14,7 @@ const MainView = props => {
   console.log("PROPS MAIN",props);
   return (
     <div className="col-md-9">
+      <CategoriesList categories={props.categories}/>
       <DeviceList
         pager={props.pager}
         devices={props.devices}

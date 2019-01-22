@@ -1,5 +1,5 @@
 import article from './reducers/article';
-//import articleList from './reducers/articleList';
+import categories from './reducers/categories';
 import deviceList from './reducers/deviceList';
 import device from './reducers/device';
 import auth from './reducers/auth';
@@ -15,7 +15,7 @@ import { reducer as formReducer } from 'redux-form';
 
 export default combineReducers({
   article,
-  //articleList,
+  categories,
   deviceList,
   device,
   auth,

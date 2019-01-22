@@ -11,6 +11,7 @@ import {
         return {
           ...state,
           device: action.payload[0].result,
+          //categories: action.payload[1].result,
         };
       case DEVICE_PAGE_UNLOADED:
         return {};
