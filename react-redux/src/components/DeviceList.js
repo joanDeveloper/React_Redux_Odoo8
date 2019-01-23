@@ -21,7 +21,8 @@ const DeviceList = props => {
       <ListPagination
         pager={props.pager}
         devicesCount={props.devicesCount}
-        currentPage={props.currentPage} />
+        currentPage={props.currentPage}
+        slug_cat={props.slug_cat} />
     </div>
   );
 };

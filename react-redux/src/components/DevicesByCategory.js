@@ -1,7 +1,6 @@
 import React from 'react';
 import agent from '../agent';
 import DeviceList from './DeviceList';
-import CategoriesList from './CategoriesList';
 import { connect } from 'react-redux';
 import { CATEGORY_PAGE_LOADED, CATEGORY_PAGE_UNLOADED } from '../constants/actionTypes';
 
@@ -16,7 +15,7 @@ const mapDispatchToProps = dispatch => ({
         dispatch({ type: CATEGORY_PAGE_UNLOADED })
 });
 
-class CategoriesPreview extends React.Component {
+class DevicesByCategory extends React.Component {
     componentWillMount() {
         this.props.onLoad(Promise.all([
             agent.Devices.byCategory(0,this.props.match.params.slug),
@@ -30,17 +29,19 @@ class CategoriesPreview extends React.Component {
     render() {
         console.log("PROPS_CAT_PREVIEW",this.props)
         if (!this.props.devicesByCategories) return null;
+        if (this.props.devicesByCategory) this.props.devicesByCategories.listDevicesByCategory = this.props.devicesByCategory;
                 
         return (
             <div className="article-page">
                 <DeviceList
-                    pager={this.props.currentPage}
+                    pager={this.props.pager}
                     devices={this.props.devicesByCategories.listDevicesByCategory}
                     devicesCount={this.props.devicesByCategories.count}
-                    currentPage={this.props.pager} />
+                    currentPage={this.props.currentPage}
+                    slug_cat={this.props.match.params.slug} />
             </div>
         );
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoriesPreview);
+export default connect(mapStateToProps, mapDispatchToProps)(DevicesByCategory);
