@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import style from '../assets/css/styles';
 import React from 'react';
 
 const CategoriesList = props => {
@@ -15,11 +16,9 @@ const CategoriesList = props => {
         props.categories.map(categories => {
           console.log("CATEGORIESLIST", categories);
           return (
-            <label>
-              <Link to={`/devices/category/${categories.name}`} className="preview-link">
-                <p><strong>{categories.name}</strong></p>
-              </Link>
-            </label>
+            <Link to={`/devices/category/${categories.name}`} className="preview-link" key={categories.name}>
+              <strong style={style.button}>{categories.name} </strong>
+            </Link>
           );
         })
       }

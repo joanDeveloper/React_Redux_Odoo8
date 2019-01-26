@@ -23,12 +23,9 @@ const mapDispatchToProps = dispatch => ({
     onChangeComment: value =>
         dispatch({ type: UPDATE_FIELD_CONTACT, key: 'comment', value }),
     onSubmit: (name, email, subject, comment) => {
-        //console.log("OnSubmit_CONTACT", name, email, subject, comment);
         agent.Contact.sendEmail(name, email, subject, comment).then(payload => {
-            console.log("YIJACONTACTS",payload);
+            dispatch({ type: CONTACT, payload })
         });
-        //console.log("PAYLOAD_CONTAT", payload);
-        //dispatch({ type: CONTACT, payload })
     },
     onUnload: () =>
         dispatch({ type: CONTACT_PAGE_UNLOADED })
@@ -52,7 +49,7 @@ class Contact extends React.Component {
     }
 
     render() {
-        console.log("PROPS", this.props);
+        console.log("PROPS_CONTACT", this.props);
         const email = this.props.email;
         const subject = this.props.subject;
         const name = this.props.name;

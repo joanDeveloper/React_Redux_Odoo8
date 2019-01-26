@@ -1,8 +1,6 @@
 import Banner from './Banner';
-import Footer from './Footer';
 import MainView from './MainView';
 import React from 'react';
-//import Tags from './Tags';
 import agent from '../../agent';
 import { connect } from 'react-redux';
 import {
@@ -34,21 +32,10 @@ const mapDispatchToProps = dispatch => ({
 class Home extends React.Component {
   componentWillMount() {
     const tab = this.props.token ? 'feed' : 'all';
-    /*const articlesPromise = this.props.token ?
-      agent.Articles.feed :
-      agent.Articles.all;*/
-      /*agent.Devices.feed().then(a=>{
-        console.log("HOMEEEE",a);
-      })*/
-      /*agent.Devices.all().then(a=>{
-        console.log("HOMEEEEAll",a);
-      }).catch(e=>{
-        console.log("ERRR",e);
-      })*/
     const devicesPromise = this.props.token ?
       agent.Devices.feed :
       agent.Devices.all;
-    //this.props.onLoad(tab, articlesPromise, Promise.all([agent.Tags.getAll(), articlesPromise()]));
+
     this.props.onLoad(tab, devicesPromise, Promise.all([devicesPromise(),agent.Categories.all()]));
   }
 
@@ -65,7 +52,7 @@ class Home extends React.Component {
             <MainView />
           </div>
         </div>
-        <Footer appName={this.props.appName}/>
+        
       </div>
     );
   }

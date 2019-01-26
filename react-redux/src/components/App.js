@@ -16,7 +16,9 @@ import ProfileFavorites from '../components/ProfileFavorites';
 import Register from '../components/Register';
 import Settings from '../components/Settings';
 import { store } from '../store';
+import Footer from '../components/Home/Footer';
 import { push } from 'react-router-redux';
+//import {app} from '../components/testVue';
 
 const mapStateToProps = state => {
   return {
@@ -24,7 +26,8 @@ const mapStateToProps = state => {
     appName: state.common.appName,
     currentUser: state.common.currentUser,
     redirectTo: state.common.redirectTo
-  }};
+  }
+};
 
 const mapDispatchToProps = dispatch => ({
   onLoad: (payload, token) =>
@@ -59,19 +62,21 @@ class App extends React.Component {
             appName={this.props.appName}
             currentUser={this.props.currentUser} />
             <Switch>
-            <Route exact path="/" component={Home}/>
-            <Route exact path="/devices/category/:slug" component={DevicesByCategory}/>
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/editor/:slug" component={Editor} />
-            <Route path="/editor" component={Editor} />
-            <Route path="/article/:id" component={Article} />
-            <Route path="/device/:slug" component={Device} />
-            <Route path="/settings" component={Settings} />
-            <Route path="/@:username/favorites" component={ProfileFavorites} />
-            <Route path="/@:username" component={Profile} />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/devices/category/:slug" component={DevicesByCategory} />
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/editor/:slug" component={Editor} />
+              <Route path="/editor" component={Editor} />
+              <Route path="/article/:id" component={Article} />
+              <Route path="/device/:slug" component={Device} />
+              <Route path="/settings" component={Settings} />
+              <Route path="/@:username/favorites" component={ProfileFavorites} />
+              <Route path="/@:username" component={Profile} />
             </Switch>
+
+          <Footer appName={this.props.appName} />
         </div>
       );
     }

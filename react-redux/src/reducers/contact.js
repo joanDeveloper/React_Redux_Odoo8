@@ -6,12 +6,14 @@ import {
   } from '../constants/actionTypes';
   
   export default (state = {}, action) => {
+    
     switch (action.type) {
       case CONTACT:
+      console.log("RED_CONTACT",action.payload.error);
         return {
           ...state,
           inProgress: false,
-          errors: action.error ? action.payload.errors : null
+          errors: action.payload.error ? action.payload.error : undefined
         };
       case CONTACT_PAGE_UNLOADED:
         return {};
