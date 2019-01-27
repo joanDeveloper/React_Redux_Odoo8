@@ -21,32 +21,16 @@ class MyController(http.Controller):
             #Response.status = '400 Not Email'
             #return Response(json.dumps({"yes":"i am json"}),content_type='application/json;charset=utf-8',status=400)
             #raise exceptions.ValidationError('not email')
-            return {
-                "error":True,
-                "status":400,
-                "message":"not email"
-            }
+            return {"error":{"message":"not email"}}
         elif subject is "":
             print("NOT SUBJECT")
-            return {
-                "error":True,
-                "status":400,
-                "message":"not subject"
-            }
+            return {"error":{"message":"not subject"}}
         elif name is "":
             print("NOT NAME")
-            return {
-                "error":True,
-                "status":400,
-                "message":"not name"
-            }
+            return {"error":{"message":"not name"}}
         elif comment is "":
             print("NOT COMMENT")
-            return {
-                "error":True,
-                "status":400,
-                "message":"not comment"
-            }
+            return {"error":{"message":"not comment"}}
         else:
             try:
                 sender = "joanmodaw@gmail.com"
@@ -57,18 +41,14 @@ class MyController(http.Controller):
                 smtpObj.ehlo()
                 smtpObj.starttls()
                 smtpObj.ehlo()
-                smtpObj.login(user="joanmodaw@gmail.com", password="********")
+                smtpObj.login(user="joanmodaw@gmail.com", password="************")
                 smtpObj.sendmail(sender, receivers, message)
                 print "***********************"
                 print "Successfully sent email"
                 print "***********************"
-                return {
-                    "error":False,
-                    "status":200,
-                    "message":"successfully sent email"
-                }
+                return {"message":"successfully sent email"}
             except ValueError:
                 print "***********************"
                 print "ERROR to sent email"
                 print "***********************"
-                return {"error":"error to send email: "+ValueError}
+                return {"error":{"message":"error to send email: "+ValueError}}

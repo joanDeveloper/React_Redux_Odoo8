@@ -4,24 +4,45 @@ from openerp import models, fields, api
 from openerp.http import request
 import xmlrpclib
 
-@http.route('/device-category', type="json", auth="none",website=True, cors="*")
+import requests
+from requests import Request,Session
+import json
+
+@http.route('/testing4', type="json", auth="none",website=True, cors="*")
 def byCategory(self):
-    print("ENTRA byCategory")
-    url = 'http://localhost:8069'
-    db = 'devices'
-    username = 'admin'
-    password = 'admin'
+    b_url = "http://localhost:8069"
+    url = "{}/web/session/authenticate".format(b_url)
 
-    common = xmlrpclib.ServerProxy('{}/xmlrpc/2/common'.format(url))
-    uid = common.authenticate(db, username, password, {})
-    models = xmlrpclib.ServerProxy('{}/xmlrpc/2/object'.format(url))
+    db = "devices"
+    user = "admin"
+    passwd = "admin"
 
-    pagination = request.jsonrequest
-    print(pagination)
-    #fields = ['slug','model','description','price','battery','brand','camera']
-    #search = models.execute_kw(db, uid, password,
-    #'list.device', 'search_read',[[],fields],pagination)
+    s = Session()
 
-    #searchCount = models.execute_kw(db, uid, password,'list.device',
-    #'search_count',[[],fields])
-    #return {"listDevices":search,"count":searchCount}
+    data = {
+        'jsonrpc':'2.0',
+        'params': {
+            'context': {},
+            'db': db,
+            'login': user,
+            'password': passwd,
+        },
+    }
+
+    headers = {
+        'Content-type': 'application/json'
+    }
+
+    req = Request('POST',url,data=json.dumps(data),headers=headers)
+
+    prepped = req.prepare()
+
+    resp = s.send(prepped)
+
+    session_id = json.loads(resp.text)['result']['session_id']
+    print(session_id)
+    # NOW MAKE REQUESTS AND PASS YOUR SESSION ID
+
+    #res = requests.get(b_url + "/your/controller/path",cookies={'session_id':str(session_id)})
+
+    #print(res.text)
