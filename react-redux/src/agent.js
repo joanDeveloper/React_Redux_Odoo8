@@ -39,6 +39,14 @@ const Auth = {
     requests.put('/user', { user })
 };
 
+const User = {
+  register: (username, email, password) =>
+    requests.postOdoo('/register', { "username":username, "email":email, "password":password }),
+  login: (email, password) =>
+    requests.postOdoo('/signin', { "email":email, "password":password } ),
+
+}
+
 const Tags = {
   getAll: () => requests.get('/tags')
 };
@@ -120,5 +128,6 @@ export default {
   Profile,
   Tags,
   Contact,
+  User,
   setToken: _token => { token = _token; }
 };

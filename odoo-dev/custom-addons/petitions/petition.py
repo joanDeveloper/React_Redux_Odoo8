@@ -108,5 +108,3 @@ class Device(http.Controller):
         r = session.post(url=url, data=json.dumps(data), headers=headers)
         print(r)
         print(r.json())
-            
-            

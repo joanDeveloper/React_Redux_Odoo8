@@ -35,11 +35,11 @@ class NoteAPI():
         self.uid = common.authenticate(db, user, pwd, {})
         self.pwd = pwd
         self.db = db
-        self.model = 'list.device'
+        self.model = 'auth.user'
 
     def get(self, ids=None):
         domain = [('id',' in', ids)] if ids else []
-        fields = ['id', 'slug']
+        fields = ['id', 'password',"username"]
         return self.execute('search_read', [domain, fields])
 
     def execute(self, method, arg_list, kwarg_dict=None):
