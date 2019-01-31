@@ -20,24 +20,23 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onClickTag: (tag, pager, payload) =>
     dispatch({ type: APPLY_TAG_FILTER, tag, pager, payload }),
-  onLoad: (tab, pager, payload) =>{
-    console.log("tab",tab,"pager",pager,"payload",payload);
-    dispatch({ type: HOME_PAGE_LOADED, tab, pager, payload })},
+  onLoad: (tab, pager, payload) => {
+    console.log("tab", tab, "pager", pager, "payload", payload);
+    dispatch({ type: HOME_PAGE_LOADED, tab, pager, payload })
+  },
   onUnload: () =>
-    dispatch({  type: HOME_PAGE_UNLOADED })
+    dispatch({ type: HOME_PAGE_UNLOADED })
 });
 
 class Home extends React.Component {
   componentWillMount() {
-    agent.Devices.test(1).then(g=>{
-      console.log("TESTING",g);
-    });
-    const tab = this.props.token ? 'feed' : 'all';
+    console.log("token home",this.props)
+    const tab = this.props.token ? 'all' : 'feed';
     const devicesPromise = this.props.token ?
-      agent.Devices.feed :
-      agent.Devices.all;
-
-    this.props.onLoad(tab, devicesPromise, Promise.all([devicesPromise(),agent.Categories.all()]));
+      agent.Devices.all :
+      agent.Devices.feed;
+    //console.log("devicesPromise", devicesPromise);
+    this.props.onLoad(tab, devicesPromise, Promise.all([devicesPromise(), agent.Categories.all()]));
   }
 
   componentWillUnmount() {
@@ -53,7 +52,7 @@ class Home extends React.Component {
             <MainView />
           </div>
         </div>
-        
+
       </div>
     );
   }

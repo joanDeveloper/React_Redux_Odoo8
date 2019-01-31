@@ -8,6 +8,7 @@ import {
 } from './constants/actionTypes';
 
 const promiseMiddleware = store => next => action => {
+  console.log("promiseMiddleware",action)
   if (isPromise(action.payload)) {
     store.dispatch({ type: ASYNC_START, subtype: action.type });
 
@@ -47,10 +48,20 @@ const promiseMiddleware = store => next => action => {
 };
 
 const localStorageMiddleware = store => next => action => {
-  if (action.type === REGISTER || action.type === LOGIN) {
+  if (action.type === LOGIN) {
     if (!action.error) {
-      window.localStorage.setItem('jwt', action.payload.user.token);
-      agent.setToken(action.payload.user.token);
+      window.localStorage.setItem('jwt', action.payload.result.user.token);
+      agent.setToken(action.payload.result.user.token);
+    }
+  } else if (action.type === LOGOUT) {
+    window.localStorage.setItem('jwt', '');
+    agent.setToken(null);
+  }
+  if (action.type === LOGIN) {
+    console.log("MIDDLEWARE",action.payload)
+    if (!action.error) {
+      window.localStorage.setItem('jwt', action.payload.result.user.token);
+      agent.setToken(action.payload.result.user.token);
     }
   } else if (action.type === LOGOUT) {
     window.localStorage.setItem('jwt', '');

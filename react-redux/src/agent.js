@@ -8,24 +8,28 @@ const API_ODOO = 'http://localhost:8069';
 
 const encode = encodeURIComponent;
 const responseBody = res => res.body;
-const responseBodyOdoo = res => res.text;
+//const responseBodyOdoo = res => res.text;
 
 let token = null;
-const tokenPlugin = req => {if (token) req.set('authorization', `Token ${token}`);}
+//const tokenPlugin = req => {if (token) {req.set('Authorization', `Bearer ${token}`);}}
+/*const tokenPluginOdoo = token => {if (token) {console.log("TOKENNNN_ODOOO",token)}}*/
+//{"authorization":token}
 
 const requests = {
   del: url =>
-    superagent.del(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
+    superagent.del(`${API_ROOT}${url}`).then(responseBody),
   get: url =>
-    superagent.get(`${API_ROOT}${url}`).use(tokenPlugin).then(responseBody),
+    superagent.get(`${API_ROOT}${url}`).then(responseBody),
   getOdoo: url =>
-    superagent.get(`${API_ODOO}${url}`).use(tokenPlugin).then(responseBodyOdoo),
+    superagent.get(`${API_ODOO}${url}`).then(responseBody),
   put: (url, body) =>
-    superagent.put(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
+    superagent.put(`${API_ROOT}${url}`, body).then(responseBody),
   post: (url, body) =>
-    superagent.post(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
+    superagent.post(`${API_ROOT}${url}`, body).then(responseBody),
   postOdoo: (url, body) =>
-    superagent.post(`${API_ODOO}${url}`, body).use(tokenPlugin).then(responseBody)
+    superagent.post(`${API_ODOO}${url}`, body).then(responseBody),
+  postOdooToken: (url, token) =>
+    superagent.post(`${API_ODOO}${url}`, token).then(responseBody)
 };
 
 const Auth = {
@@ -44,6 +48,8 @@ const User = {
     requests.postOdoo('/register', { "username":username, "email":email, "password":password }),
   login: (email, password) =>
     requests.postOdoo('/signin', { "email":email, "password":password } ),
+  current: (token) =>
+    requests.postOdooToken('/user',{"token":token}),
 
 }
 

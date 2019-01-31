@@ -8,13 +8,15 @@ import {
 } from '../constants/actionTypes';
 
 export default (state = {}, action) => {
+  console.log("AUTH_REDUCER",action)
   switch (action.type) {
     case LOGIN:
     case REGISTER:
+    console.log("AUTH_REDUCER_REGISTER",action)
       return {
         ...state,
         inProgress: false,
-        errors: action.error ? action.payload.errors : null
+        errors: action.payload.error ? action.payload.error : null
       };
     case LOGIN_PAGE_UNLOADED:
     case REGISTER_PAGE_UNLOADED:
