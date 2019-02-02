@@ -1,10 +1,7 @@
 import React from 'react';
 import homeStyle from './homeStyle';
 
-const Banner = ({ appName, token }) => {
-  if (token) {
-    return null;
-  }
+const Banner = ({ appName }) => {
   return (
     <div style={homeStyle.banner} align="center">
         <h1 className="logo-font">{appName}</h1>

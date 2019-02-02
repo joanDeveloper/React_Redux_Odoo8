@@ -7,12 +7,15 @@
     "react-scripts": "1.1.1"
   },
   "dependencies": {
+    "@material-ui/core": "^3.9.1",
+    "@material-ui/styles": "3.0.0-alpha.9",
+    "downshift": "^3.2.2",
     "history": "^4.6.3",
     "marked": "^0.3.6",
     "odoo-xmlrpc": "^1.0.7",
     "prop-types": "^15.5.10",
-    "react": "^16.3.0",
-    "react-dom": "^16.3.0",
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2",
     "react-native-odoo-promise-based": "^0.6.1",
     "react-redux": "^5.0.7",
     "react-router": "^4.1.2",

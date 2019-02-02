@@ -8,6 +8,8 @@ import {
   HOME_PAGE_UNLOADED,
   APPLY_TAG_FILTER
 } from '../../constants/actionTypes';
+import AlertDialogSlide from '../Dialog';
+import IntegrationDownshift from '../React-material-ui/Autocomplete';
 
 const Promise = global.Promise;
 
@@ -44,12 +46,15 @@ class Home extends React.Component {
   }
 
   render() {
+    console.log("HOME____",this.props)
     return (
       <div className="home-page">
-        <Banner token={this.props.token} appName={this.props.appName} />
+        <Banner appName={this.props.appName} />
         <div className="container page">
           <div className="row">
             <MainView />
+            <IntegrationDownshift token={this.props.token}/>
+            <AlertDialogSlide/>
           </div>
         </div>
 
