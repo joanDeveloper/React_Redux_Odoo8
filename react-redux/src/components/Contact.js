@@ -45,10 +45,11 @@ class Contact extends React.Component {
     }
 
     componentWillUnmount() {
+        
         this.props.onUnload();
     }
 
-    render() {
+    render() { 
         console.log("PROPS_CONTACT", this.props);
         const email = this.props.email;
         const subject = this.props.subject;

@@ -1,5 +1,6 @@
 import {
   APP_LOAD,
+  ASYNC_END,
   REDIRECT,
   LOGOUT,
   ARTICLE_SUBMITTED,
@@ -31,8 +32,7 @@ export default (state = defaultState, action) => {
         ...state,
         token: action.token || null,
         appLoaded: true,
-        //currentUser: action.payload ? action.payload.user : null
-        currentUser: action.payload ? action.payload.result.user : null
+        currentUser: action.payload ? action.payload.result.user.currentUser : null
       };
     case REDIRECT:
       return { ...state, redirectTo: null };
@@ -52,7 +52,7 @@ export default (state = defaultState, action) => {
         ...state,
         redirectTo: action.error ? null : '/',
         token: action.error ? null : action.payload.result.user.token,
-        currentUser: action.error ? null : action.payload.result.user
+        currentUser: action.error ? null : action.payload.result.user.currentUser
       };
     case DELETE_ARTICLE:
       return { ...state, redirectTo: '/' };

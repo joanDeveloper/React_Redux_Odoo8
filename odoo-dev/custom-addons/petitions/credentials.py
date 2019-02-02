@@ -1,11 +1,11 @@
-import xmlrpclib
+import xmlrpclib, base64
 
 class Credentials():
     def models(self):
         url = 'http://localhost:8069'
-        db = 'devices'
-        username = 'admin'
-        password = 'admin'
+        db = base64.b64decode("ZGV2aWNlcw==")
+        username = base64.b64decode('YWRtaW4=')
+        password = base64.b64decode('YWRtaW4=')
 
         common = xmlrpclib.ServerProxy('{}/xmlrpc/2/common'.format(url))
         uid = common.authenticate(db, username, password, {})
@@ -17,4 +17,5 @@ class Credentials():
             "uid":uid,
             "models":models
         }
+
         return credentials

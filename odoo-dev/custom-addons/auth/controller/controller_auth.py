@@ -3,6 +3,7 @@ import json
 from openerp.http import request
 from ...petitions.credentials import Credentials
 import xmlrpclib, base64, jwt
+from controller_middleware import Middleware
 
 class Auth(http.Controller):
     def __init__(self):
@@ -14,20 +15,10 @@ class Auth(http.Controller):
     
     @http.route('/register', type="json", auth="none",website=True, cors="*")
     def register(self):
-        print("ENTRA EN REGISTER")
         data = request.jsonrequest
 
         searchCount = self._models.execute_kw(self._db,self._uid,self._password,'auth.user',
         'search_count',[[['email', '=', data['email']]]])
-
-        #testEnc = base64.b64encode(data['password'])
-        #testDec = base64.b64decode(testEnc)
-
-        #token = jwt.encode({'user_id': 1}, '12345', algorithm='HS256')
-        #decToken = jwt.decode(token, '12345', algorithms=['HS256'])
-        #print(decToken)
-
-        #auth_token = req.headers.get('Authentication-Token')
 
         if searchCount == 0:
             self._models.execute_kw(self._db, self._uid, self._password, 'auth.user', 'create', [{
@@ -44,9 +35,10 @@ class Auth(http.Controller):
     @http.route('/signin', type="json", auth="none",website=True, cors="*")
     def login(self):
         data = request.jsonrequest
-
+    
         searchEmail = self._models.execute_kw(self._db,self._uid,self._password,'auth.user',
         'search_count',[[['email', '=', data['email']]]])
+        print(searchEmail)
 
         if searchEmail == 0:
             return {"error":{"message":"el email no existe"}}
@@ -62,7 +54,50 @@ class Auth(http.Controller):
                 fields = ['id','email','username','password']
                 searchUser = self._models.execute_kw(self._db, self._uid, self._password,'auth.user',
                 'search_read',[[['email', '=', data['email']]],fields])
-                print(searchUser)
+                
+                token = Middleware().encode(searchUser)
+                print(token)
+                
+                ######## Update token ###########
+                self._models.execute_kw(self._db, self._uid, self._password, 'auth.user',
+                'write', [[searchUser[0]['id']], {
+                    'token': token
+                }])
+
+                return {
+                    "user":{
+                        "token":token,
+                        "currentUser":{
+                            "username":searchUser[0]['username'],
+                            "email":searchUser[0]['email']
+                        }
+                    }
+                }
             else:
                 print("PASSWORD INCORRECTO")
                 return {"error":{"message":"password incorrecto"}}
+                
+    @http.route('/user', type="json", auth="none", website=True, cors="*" )
+    def authToken(self,req):
+        print("VERIFY-TOKEN")
+        #print(request.httprequest.headers)
+        data = request.jsonrequest
+        decToken = Middleware().decode(data)
+        if decToken == 0:
+            return {"error":{"message":"token invalido o expirado"}}
+
+        else:
+            searchCount = self._models.execute_kw(self._db,self._uid,self._password,'auth.user',
+            'search_count',[[['email', '=', decToken['user']['email']]]])
+
+            if searchCount >=1:
+                fields = ['id','email','username','password']
+                searchUser = self._models.execute_kw(self._db, self._uid, self._password,'auth.user',
+                'search_read',[[['email', '=', decToken['user']['email']]],fields])
+                return {"user":{
+                    "currentUser":{
+                                "username":searchUser[0]['username'],
+                                "email":searchUser[0]['email']
+                            }}}
+            else:
+                return {"error":{"message":"fallo autentificacion del token"}}

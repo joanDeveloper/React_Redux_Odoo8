@@ -5,8 +5,12 @@
     2. List/Details
     3. Relationships (devices with categories)
     4. Pagination
-    5. Filter by category
+    5. Filter by tags (categories)
+    6. Signin/Signup
+    7. JWT
 
 - Improvements:
-    1. ReduxForm
-    2. Reuse components
+    1. ReduxForm in Contact
+    2. Reuse components (ListPagination,ListErrors,DeviceList)
+    3. Create Api view to make a CRUD from the backend Odoo
+    4. Check token if expired or if it is invalid by the secret (middleware)

@@ -17,13 +17,7 @@ const mapDispatchToProps = dispatch => ({
   onChangePassword: value =>
     dispatch({ type: UPDATE_FIELD_AUTH, key: 'password', value }),
   onSubmit: (email, password) =>
-    //dispatch({ type: LOGIN, payload: agent.Auth.login(email, password) }),
-    dispatch({ type: LOGIN, payload: agent.User.login(email, password) })
-    /*agent.User.login(email, password).then(a=>{
-      console.log("LOGIN",a)
-      dispatch({ type: LOGIN, payload: a.result })
-    })*/
-  ,
+    dispatch({ type: LOGIN, payload: agent.User.login(email, password) }),
   onUnload: () =>
     dispatch({ type: LOGIN_PAGE_UNLOADED })
 });
@@ -44,6 +38,7 @@ class Login extends React.Component {
   }
 
   render() {
+    console.log("LOGIN",this.props)
     const email = this.props.email;
     const password = this.props.password;
     return (
@@ -59,7 +54,7 @@ class Login extends React.Component {
                 </Link>
               </p>
 
-              <ListErrors errors={this.props.errors} />
+              <ListErrors errors={this.props.error} />
 
               <form onSubmit={this.submitForm(email, password)}>
                 <fieldset>

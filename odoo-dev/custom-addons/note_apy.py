@@ -39,7 +39,7 @@ class NoteAPI():
 
     def get(self, ids=None):
         domain = [('id',' in', ids)] if ids else []
-        fields = ['id', 'password',"username"]
+        fields = ['id', 'password',"username", "token"]
         return self.execute('search_read', [domain, fields])
 
     def execute(self, method, arg_list, kwarg_dict=None):

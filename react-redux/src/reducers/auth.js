@@ -1,6 +1,7 @@
 import {
   LOGIN,
   REGISTER,
+  ASYNC_END,
   LOGIN_PAGE_UNLOADED,
   REGISTER_PAGE_UNLOADED,
   ASYNC_START,
@@ -11,6 +12,12 @@ export default (state = {}, action) => {
   console.log("AUTH_REDUCER",action)
   switch (action.type) {
     case LOGIN:
+    case ASYNC_END:
+      return {
+        ...state,
+        inProgress: false,
+        error: action.promise && action.promise.result ? action.promise.result.error : null 
+      };
     case REGISTER:
     console.log("AUTH_REDUCER_REGISTER",action)
       return {
