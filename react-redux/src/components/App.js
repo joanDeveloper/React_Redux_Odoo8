@@ -19,7 +19,7 @@ import { store } from '../store';
 import Footer from '../components/Home/Footer';
 import AlertDialogSlide from '../components/Dialog';
 import { push } from 'react-router-redux';
-//import {app} from '../components/testVue';
+import  "../styles.css";
 
 const mapStateToProps = state => {
   return {

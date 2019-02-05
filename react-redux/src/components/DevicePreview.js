@@ -10,8 +10,8 @@ const DevicePreview = props => {
     <div className="article-preview">
       <div className="article-meta">
         <Link to={`/device/${device.slug}`} className="preview-link">
+          <img src={`../../media/devices/${device.media}.png`} alt={device.media} style={{width:150,height:150}}/>
           <p><strong>{device.brand}</strong></p>
-          <p>model: {device.model}</p>
           <p>price: {device.price} €</p>
         </Link>
       </div>

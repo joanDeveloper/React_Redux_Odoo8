@@ -15,10 +15,12 @@ function AlertDialogSlide() {
   const [open, setOpen] = React.useState(false);
 
   function handleClickOpen() {
+    console.log("handleClickOpen");
     setOpen(true);
   }
 
   function handleClose() {
+    console.log("handleClose");
     setOpen(false);
   }
 

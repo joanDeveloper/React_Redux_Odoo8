@@ -1,0 +1,63 @@
+/* colors */
+/* GENERAL */
+body {
+  margin: 0; }
+
+.container-flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start; }
+
+/* banner */
+.banners {
+  background: linear-gradient(45deg, #cedbe9 0%, #aac5de 12%, #6199c7 20%, #3a84c3 51%, #419ad6 59%, #4bb8f0 71%, #3a8bc2 84%, #26558b 100%);
+  padding: 100px;
+  color: white; }
+
+/* nav menu */
+.nav-item {
+  list-style: none;
+  margin-left: 15px; }
+
+.nav-link {
+  outline: none;
+  text-decoration: none;
+  color: black; }
+
+.nav-link:hover {
+  color: #258dc8;
+  padding: 6px;
+  font-size: 20px;
+  transition: 0.7s; }
+
+/* Button */
+.button {
+  border-radius: 10px;
+  background-color: #356aa0;
+  color: white;
+  font-size: 20px;
+  padding: 15px;
+  cursor: pointer;
+  margin: 5px; }
+
+/* button categories */
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s; }
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 2s; }
+
+.button:hover span {
+  padding-right: 35px; }
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0; }

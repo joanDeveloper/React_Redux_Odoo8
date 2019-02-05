@@ -51,7 +51,6 @@ function getSuggestions(value, props) {
 function renderSuggestion({ suggestion, index, itemProps, highlightedIndex, selectedItem }) {
     const isHighlighted = highlightedIndex === index;
     const isSelected = (selectedItem || '').indexOf(suggestion.label) > -1;
-    console.log("AUTOCOMPLETE",selectedItem)
     
     return (
         <Link to={`/device/${suggestion.slug}`} className="preview-link" key={suggestion.slug}>

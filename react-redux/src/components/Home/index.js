@@ -9,7 +9,6 @@ import {
   APPLY_TAG_FILTER
 } from '../../constants/actionTypes';
 import AlertDialogSlide from '../Dialog';
-import IntegrationDownshift from '../React-material-ui/Autocomplete';
 
 const Promise = global.Promise;
 
@@ -32,12 +31,11 @@ const mapDispatchToProps = dispatch => ({
 
 class Home extends React.Component {
   componentWillMount() {
-    console.log("token home",this.props)
+    console.log("token home", this.props)
     const tab = this.props.token ? 'all' : 'feed';
     const devicesPromise = this.props.token ?
       agent.Devices.all :
       agent.Devices.feed;
-    //console.log("devicesPromise", devicesPromise);
     this.props.onLoad(tab, devicesPromise, Promise.all([devicesPromise(), agent.Categories.all()]));
   }
 
@@ -46,18 +44,15 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log("HOME____",this.props)
     return (
       <div className="home-page">
         <Banner appName={this.props.appName} />
         <div className="container page">
           <div className="row">
-            <MainView />
-            <IntegrationDownshift token={this.props.token}/>
-            <AlertDialogSlide/>
+            <MainView token={this.props.token} />
+            <AlertDialogSlide />
           </div>
         </div>
-
       </div>
     );
   }

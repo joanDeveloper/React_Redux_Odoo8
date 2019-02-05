@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 const LoggedOutView = props => {
   if (!props.currentUser) {
     return (
-      <ul className="nav navbar-nav pull-xs-right">
-
+      <nav className="container-flex">
         <li className="nav-item">
           <Link to="/" className="nav-link">
             Home
@@ -30,7 +29,7 @@ const LoggedOutView = props => {
           </Link>
         </li>
 
-      </ul>
+      </nav>
     );
   }
   return null;
@@ -39,8 +38,7 @@ const LoggedOutView = props => {
 const LoggedInView = props => {
   if (props.currentUser) {
     return (
-      <ul className="nav navbar-nav pull-xs-right">
-
+      <nav className="container-flex">
         <li className="nav-item">
           <Link to="/" className="nav-link">
             Home
@@ -58,7 +56,7 @@ const LoggedInView = props => {
             to={`/`}
             className="nav-link">
             <img src={props.currentUser.image} className="user-pic" alt={props.currentUser.username} />
-            
+
           </Link>
         </li>
 
@@ -68,7 +66,8 @@ const LoggedInView = props => {
           </Link>
         </li>
 
-      </ul>
+      </nav>
+      
     );
   }
 
@@ -78,18 +77,15 @@ const LoggedInView = props => {
 class Header extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-light">
-        <div className="container">
+      <section className="container-flex">
+        <Link to="/" className="navbar-brand">
+          {this.props.appName.toLowerCase()}
+        </Link>
 
-          <Link to="/" className="navbar-brand">
-            {this.props.appName.toLowerCase()}
-          </Link>
+        <LoggedOutView currentUser={this.props.currentUser} />
 
-          <LoggedOutView currentUser={this.props.currentUser} />
-
-          <LoggedInView currentUser={this.props.currentUser} />
-        </div>
-      </nav>
+        <LoggedInView currentUser={this.props.currentUser} />
+      </section>
     );
   }
 }
