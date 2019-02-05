@@ -48,10 +48,8 @@ class Home extends React.Component {
       <div className="home-page">
         <Banner appName={this.props.appName} />
         <div className="container page">
-          <div className="row">
             <MainView token={this.props.token} />
             <AlertDialogSlide />
-          </div>
         </div>
       </div>
     );

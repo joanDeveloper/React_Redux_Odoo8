@@ -10,21 +10,19 @@ const mapDispatchToProps = dispatch => ({
 
 const ListPagination = props => {
   console.log("ListPagination",props)
-  if (props.devicesCount <= 10) {
-    return null;
-  }
+  if (props.devicesCount <= 10) return null;
 
   const range = [];
   for (let i = 0; i < Math.ceil(props.devicesCount / 10); ++i) range.push(i);
-  console.log("PROPS LIST_PAGINATION", props);
+  
   const setPage = page => {
     if(props.pager) props.onSetPage(page, props.pager(page,props.slug_cat));
     else props.onSetPage(page, agent.Devices.all(page))
   };
   
   return (
-    <nav>
-      <ul className="pagination">
+    <section>
+      <ul className="container-flex">
         {
           range.map(v => {
             const isCurrent = v === props.currentPage;
@@ -46,7 +44,7 @@ const ListPagination = props => {
         }
 
       </ul>
-    </nav>
+    </section>
   );
 };
 

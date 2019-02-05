@@ -11,19 +11,22 @@ const DeviceList = props => {
   }
 
   return (
-    <div>
+    <span>
       {
         props.devices.map(device => {
           console.log("DEVICELIST", device);
           return (<DevicePreview device={device} key={device.slug} />);
         })
       }
-      <ListPagination
-        pager={props.pager}
-        devicesCount={props.devicesCount}
-        currentPage={props.currentPage}
-        slug_cat={props.slug_cat} />
-    </div>
+
+      <section className="container-pagination">
+        <ListPagination
+          pager={props.pager}
+          devicesCount={props.devicesCount}
+          currentPage={props.currentPage}
+          slug_cat={props.slug_cat} />
+      </section>
+    </span>
   );
 };
 

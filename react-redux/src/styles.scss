@@ -9,6 +9,8 @@ body{
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
+    padding: 0.5%;
+    clear: both;
 }
 
 /* banner */
@@ -44,7 +46,7 @@ body{
     font-size: 20px;
     padding: 15px;
     cursor: pointer;
-    margin: 5px;
+    
   }
     /* button categories */
     .button span {
@@ -58,8 +60,6 @@ body{
         content: '\00bb';
         position: absolute;
         opacity: 0;
-        top: 0;
-        right: -20px;
         transition: 2s;
     }
     
@@ -69,3 +69,90 @@ body{
         opacity: 1;
         right: 0;
     }
+
+    /* container categories */
+    .container-categories{
+        margin-left: 40vw;
+        margin-bottom: 2%;
+    }
+/* Pagination */
+.container-pagination{
+    margin-top: 0%;
+}
+.page-item{
+    list-style: none;
+    margin-left: 0.8%;
+}
+.page-link{
+    text-decoration: none;
+    box-shadow: 1px 1px 1px 1px grey;
+    padding: 35%;
+    border-radius: 5px;
+    border: none;
+    
+}
+
+/*.active{
+    color: $color-green;
+}*/
+
+/* HOME */
+.categories{
+    margin-left: 10px;
+}
+.container-device{
+    margin-left: 15%;
+}
+.device-preview{
+    float: left;
+    width: 20vw;
+    box-shadow: 2px 2px 2px 2px $color-button;
+    margin: 2%;
+    border-radius: 5px;
+    padding: 10px;
+}
+.device-preview:hover{
+    transition: 1s;
+    transform:rotate(5deg);
+}
+/* link list device (Link)*/
+.preview-link{
+    text-decoration: none;
+}
+/* media query device-preview */
+@media (max-width: 900px) {
+    .device-preview {
+        width: 30vw;
+    }
+    .container-categories{
+        margin-bottom: 5%;
+    }
+}
+
+@media (max-width: 540px) {
+    .device-preview {
+        width: 40vw;
+    }
+    .container-categories{
+        margin-bottom: 5%;
+    }
+}
+
+@media (max-width: 355px) {
+    .device-preview {
+        width: 50vw;
+    }
+    .container-categories{
+        margin-left: 10vw;
+        margin-bottom: 12%;
+    }
+}
+
+
+/* FOOTER */
+footer{
+    background:linear-gradient(45deg, #cedbe9 0%,#aac5de 12%,#6199c7 20%,#3a84c3 51%,#419ad6 59%,#4bb8f0 71%,#3a8bc2 84%,#26558b 100%);
+    padding:30px;
+    color: $color-white;
+    clear: both;
+}
