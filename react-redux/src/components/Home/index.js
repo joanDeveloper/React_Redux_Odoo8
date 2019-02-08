@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import {
   HOME_PAGE_LOADED,
   HOME_PAGE_UNLOADED,
-  APPLY_TAG_FILTER
+  APPLY_TAG_FILTER,
+  HOME_OFFERS
 } from '../../constants/actionTypes';
 import AlertDialogSlide from '../Dialog';
 
@@ -25,6 +26,9 @@ const mapDispatchToProps = dispatch => ({
     console.log("tab", tab, "pager", pager, "payload", payload);
     dispatch({ type: HOME_PAGE_LOADED, tab, pager, payload })
   },
+  loadOffers:(payload) =>
+    dispatch({ type: HOME_OFFERS, payload })
+  ,
   onUnload: () =>
     dispatch({ type: HOME_PAGE_UNLOADED })
 });
@@ -36,7 +40,8 @@ class Home extends React.Component {
     const devicesPromise = this.props.token ?
       agent.Devices.all :
       agent.Devices.feed;
-    this.props.onLoad(tab, devicesPromise, Promise.all([devicesPromise(), agent.Categories.all()]));
+    this.props.onLoad(tab, devicesPromise, Promise.all([devicesPromise(), agent.Categories.all(),agent.Devices.offers()]));
+    
   }
 
   componentWillUnmount() {

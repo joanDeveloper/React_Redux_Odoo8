@@ -19,7 +19,8 @@ class Device(http.Controller):
     @http.route('/device', type="json", auth="none",website=True, cors="*")
     def lista(self):
         pagination = request.jsonrequest
-        fields = ['slug','slug_category','model','description','price','battery','brand','camera','media']
+        fields = ['slug','slug_category','model','description','price','battery','brand','camera','media','oferta']
+            
         search = self._models.execute_kw(self._db, self._uid, self._password,
         'list.device', 'search_read',[[],fields],pagination)
 
@@ -41,7 +42,7 @@ class Device(http.Controller):
     @http.route('/device-category', type="json", auth="none",website=True, cors="*")
     def byCategory(self):
         data = request.jsonrequest
-        fields = ['slug','model','description','price','battery','brand','camera','media']
+        fields = ['slug','model','description','price','battery','brand','camera','media','oferta']
         
         search = self._models.execute_kw(self._db, self._uid, self._password,'list.device',
         'search_read',[[['category_id', '=', data['slug']]],fields],

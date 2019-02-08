@@ -18,3 +18,4 @@ class Device(models.Model):
     brand = fields.Char('brand', required=True)
     camera = fields.Integer('camera', required=True)
     media = fields.Char('media', required=True)
+    oferta = fields.Boolean(string='Oferta')

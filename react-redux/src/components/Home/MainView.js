@@ -3,13 +3,13 @@ import CategoriesList from '../CategoriesList';
 import React from 'react';
 import { connect } from 'react-redux';
 import IntegrationDownshift from '../React-material-ui/Autocomplete';
+import Offers from '../Offers';
 
 const mapStateToProps = state => ({
   ...state.deviceList
 });
 
 const MainView = props => {
-  console.log("PROPS MAIN", props);
   return (
     <span>
       <IntegrationDownshift token={props.token} />
@@ -17,7 +17,6 @@ const MainView = props => {
         <CategoriesList
           categories={props.categories}
           token={props.token} />
-
       </section>
       <section className="container-device">
         <DeviceList
@@ -27,6 +26,7 @@ const MainView = props => {
           devicesCount={props.devicesCount}
           currentPage={props.currentPage} />
       </section>
+      <Offers device={props.devices} token={props.token}/>
     </span>
   );
 };

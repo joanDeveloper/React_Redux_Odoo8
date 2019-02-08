@@ -15,3 +15,4 @@
     3. Create Api view to make a CRUD from the backend Odoo
     4. Check token if expired or if it is invalid by the secret (middleware)
     5. Autocomplete React-material-ui
+    6. Design web with sass

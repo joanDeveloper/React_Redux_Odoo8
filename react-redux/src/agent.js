@@ -72,6 +72,8 @@ const Devices = {
     requests.postOdoo('/device-category', {'offset': page ? page * 10 : 0, 'limit': 10, 'slug':slug}),
   test: page =>
     requests.postOdoo('/testing', {'offset': page ? page * 10 : 0, 'limit': 10}),
+  offers: () =>
+    requests.postOdoo('/device-offers',{}),
 }
 
 const Categories = {

@@ -24,6 +24,7 @@
                         <field name="brand"/>
                         <field name="camera"/>
                         <field name="media"/>
+                        <field name="oferta"/>
                     </group>
                 </group>
             </sheet>
@@ -41,6 +42,7 @@
             <field name="model"/>
             <field name="brand"/>
             <field name="price"/>
+            <field name="oferta"/>
         </tree>
     </field>
 </record>
