@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import agent from '../agent';
 import DeviceList from './DeviceList';
 import { connect } from 'react-redux';
@@ -9,39 +9,32 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onLoad: (payload,pager) =>
+    onLoad: (payload, pager) =>
         dispatch({ type: CATEGORY_PAGE_LOADED, pager, payload }),
     onUnload: () =>
         dispatch({ type: CATEGORY_PAGE_UNLOADED })
 });
 
-class DevicesByCategory extends React.Component {
-    componentWillMount() {
-        this.props.onLoad(Promise.all([
-            agent.Devices.byCategory(0,this.props.match.params.slug),
-        ]),agent.Devices.byCategory);
-    }
+const DevicesByCategory = props => {
+    useEffect(() => {
+        props.onLoad(Promise.all([
+            agent.Devices.byCategory(0, props.match.params.slug),
+        ]), agent.Devices.byCategory);
+    }, [])
 
-    componentWillUnmount() {
-        this.props.onUnload();
-    }
+    if (!props.devicesByCategories) return null;
+    if (props.devicesByCategory) props.devicesByCategories.listDevicesByCategory = props.devicesByCategory;
 
-    render() {
-        console.log("PROPS_CAT_PREVIEW",this.props)
-        if (!this.props.devicesByCategories) return null;
-        if (this.props.devicesByCategory) this.props.devicesByCategories.listDevicesByCategory = this.props.devicesByCategory;
-                
-        return (
-            <div className="article-page">
-                <DeviceList
-                    pager={this.props.pager}
-                    devices={this.props.devicesByCategories.listDevicesByCategory}
-                    devicesCount={this.props.devicesByCategories.count}
-                    currentPage={this.props.currentPage}
-                    slug_cat={this.props.match.params.slug} />
-            </div>
-        );
-    }
+    return (
+        <div className="article-page">
+            <DeviceList
+                pager={props.pager}
+                devices={props.devicesByCategories.listDevicesByCategory}
+                devicesCount={props.devicesByCategories.count}
+                currentPage={props.currentPage}
+                slug_cat={props.match.params.slug} />
+        </div>
+    );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DevicesByCategory);
