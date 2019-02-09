@@ -1,0 +1,19 @@
+
+@mixin box-item($color: white) {
+    float: left;
+    width: 20vw;
+    box-shadow: 2px 2px 2px 2px $color-button;
+    background: $color;
+    margin: 2%;
+    border-radius: 5px;
+    padding: 10px;
+}
+@mixin rotate_5() {
+    transition: 1s;
+    transform:rotate(5deg);
+}
+
+@mixin rotate_360() {
+    transition: 1s;
+    transform:rotate(360deg);
+}

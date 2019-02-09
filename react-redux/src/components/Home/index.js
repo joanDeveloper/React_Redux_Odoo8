@@ -10,6 +10,7 @@ import {
   HOME_OFFERS
 } from '../../constants/actionTypes';
 import AlertDialogSlide from '../Dialog';
+import DemoCarousel from '../Carousel';
 
 const Promise = global.Promise;
 
@@ -26,7 +27,7 @@ const mapDispatchToProps = dispatch => ({
     console.log("tab", tab, "pager", pager, "payload", payload);
     dispatch({ type: HOME_PAGE_LOADED, tab, pager, payload })
   },
-  loadOffers:(payload) =>
+  loadOffers: (payload) =>
     dispatch({ type: HOME_OFFERS, payload })
   ,
   onUnload: () =>
@@ -40,21 +41,21 @@ class Home extends React.Component {
     const devicesPromise = this.props.token ?
       agent.Devices.all :
       agent.Devices.feed;
-    this.props.onLoad(tab, devicesPromise, Promise.all([devicesPromise(), agent.Categories.all(),agent.Devices.offers()]));
-    
+    this.props.onLoad(tab, devicesPromise, Promise.all([devicesPromise(), agent.Categories.all(), agent.Devices.offers()]));
+
   }
 
   componentWillUnmount() {
     this.props.onUnload();
   }
-
+  //<Banner appName={this.props.appName} />
   render() {
     return (
       <div className="home-page">
-        <Banner appName={this.props.appName} />
+        <DemoCarousel />
         <div className="container page">
-            <MainView token={this.props.token} />
-            <AlertDialogSlide />
+          <MainView token={this.props.token} />
+          <AlertDialogSlide />
         </div>
       </div>
     );

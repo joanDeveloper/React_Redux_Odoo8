@@ -14,7 +14,7 @@ const DeviceList = props => {
     <span>
       {
         props.devices.map(device => {
-          return (<DevicePreview device={device} key={device.slug} />);
+          return (<DevicePreview device={device} key={device.slug} class="device-preview-list" />);
         })
       }
 

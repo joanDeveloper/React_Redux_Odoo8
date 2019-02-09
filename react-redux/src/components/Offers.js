@@ -16,7 +16,7 @@ class Offers extends React.Component {
                     this.props.offers.filter(item => item.oferta != false).map(prod => {
                         return (
                             <section className="container-device">
-                                <DevicePreview device={prod} key={prod.slug} />
+                                <DevicePreview device={prod} key={prod.slug} class="device-preview-offers"/>
                             </section>
                         )
                     })

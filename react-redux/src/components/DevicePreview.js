@@ -7,7 +7,7 @@ const DevicePreview = props => {
   const device = props.device;
 
   return (
-    <div className="device-preview">
+    <div className={props.class}>
       <Link to={`/device/${device.slug}`} className="preview-link">
         <img src={`../../media/devices/${device.media}.png`} alt={device.media} style={{ width: 150, height: 150 }} />
         <p><strong>{device.brand}</strong></p>

@@ -1,5 +1,6 @@
 @import '../node_modules/compass-mixins/lib/compass';
 @import './variables.scss';
+@import './mixins.scss';
 
 /* GENERAL */
 body{
@@ -97,24 +98,24 @@ body{
 }*/
 
 /* HOME */
-.categories{
-    margin-left: 10px;
-}
-.container-device{
-    margin-left: 15%;
-}
-.device-preview{
-    float: left;
-    width: 20vw;
-    box-shadow: 2px 2px 2px 2px $color-button;
-    margin: 2%;
-    border-radius: 5px;
-    padding: 10px;
-}
-.device-preview:hover{
-    transition: 1s;
-    transform:rotate(5deg);
-}
+.categories{ margin-left: 10px; }
+.container-device{ margin-left: 15%; }
+
+    .device-preview-list{ @include box-item(); }
+    .device-preview-offers{ @include box-item($color-banner); }
+    .device-preview-offers:hover{ @include rotate_360(); }
+    .device-preview-list:hover{ 
+        animation-duration: 0.5s;
+        animation-name: desplazar_box;
+        animation-direction: alternate;
+        animation-iteration-count: infinite; 
+    }
+    @keyframes desplazar_box {
+        from {transform: translate(5px);}
+        to{transform: translate(-5px);}
+    }
+
+
 /* link list device (Link)*/
 .preview-link{
     text-decoration: none;
