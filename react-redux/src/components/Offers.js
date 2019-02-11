@@ -4,19 +4,18 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
     ...state.deviceList
-  });
+});
 
-class Offers extends React.Component {
-    render() {
-        if (!this.props.offers) return null;
-        return (
+const Offers = props => {
+    return !props.offers ? null :
+        (
             <span>
                 <h3 align="center">Nuestras ofertas</h3>
                 {
-                    this.props.offers.filter(item => item.oferta != false).map(prod => {
+                    props.offers.filter(item => item.oferta != false).map(prod => {
                         return (
-                            <section className="container-device">
-                                <DevicePreview device={prod} key={prod.slug} class="device-preview-offers"/>
+                            <section className="container-device" key={prod.slug}>
+                                <DevicePreview device={prod} class="device-preview-offers" />
                             </section>
                         )
                     })
@@ -24,8 +23,5 @@ class Offers extends React.Component {
                 }
             </span>
         );
-    }
 }
-
-//export default Offers;
 export default connect(mapStateToProps)(Offers);

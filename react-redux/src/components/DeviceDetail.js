@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import agent from '../agent';
 import { connect } from 'react-redux';
+import  Comments from './Comments';
 import { DEVICE_PAGE_LOADED, DEVICE_PAGE_UNLOADED } from '../constants/actionTypes';
 
 const mapStateToProps = state => ({
@@ -20,6 +21,7 @@ const Device = props => {
         props.onLoad(Promise.all([
             agent.Devices.detail(props.match.params.slug),
         ]));
+
     }, [])
 
     if (!props.device) return null;
@@ -36,10 +38,13 @@ const Device = props => {
                             <p>Camera: {device.camera} pixels</p>
                             <p>Descripcion: {device.description}</p>
                             <p>Precio: {device.price} €</p>
+                            <Comments slug={device.slug}/>
                         </section>
+                        
                     )
                 })
             }
+            
         </div>
     )
 }

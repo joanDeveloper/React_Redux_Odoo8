@@ -110,12 +110,14 @@ const Articles = {
 };
 
 const Comments = {
-  create: (slug, comment) =>
-    requests.post(`/articles/${slug}/comments`, { comment }),
-  delete: (slug, commentId) =>
+  create: (slug, comment) =>{
+    requests.postOdoo(`/comments`, { "slug":slug, "comment":comment })
+  }
+    
+  /*delete: (slug, commentId) =>
     requests.del(`/articles/${slug}/comments/${commentId}`),
   forArticle: slug =>
-    requests.get(`/articles/${slug}/comments`)
+    requests.get(`/articles/${slug}/comments`)*/
 };
 
 const Profile = {
