@@ -19,3 +19,6 @@ class Device(models.Model):
     camera = fields.Integer('camera', required=True)
     media = fields.Char('media', required=True)
     oferta = fields.Boolean(string='Oferta')
+
+    # slug = fields.One2many(
+    #     'comment.items', 'comment', string='slug')

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const LoggedOutView = props => {
   if (!props.currentUser) {
     return (
-      <nav className="container-flex">
+      <nav className="container-nav">
         <li className="nav-item">
           <Link to="/" className="nav-link">
             Home
@@ -28,7 +28,7 @@ const LoggedOutView = props => {
             Contact
           </Link>
         </li>
-
+        <img src={`./menu/menu.svg`} width="20" height="20" className="responsive"></img>
       </nav>
     );
   }
@@ -38,20 +38,20 @@ const LoggedOutView = props => {
 const LoggedInView = props => {
   if (props.currentUser) {
     return (
-      <nav className="container-flex">
-        <li className="nav-item">
+      <nav className="container-nav">
+        <li className="nav-item" id="nav-item">
           <Link to="/" className="nav-link">
             Home
           </Link>
         </li>
 
-        <li className="nav-item">
+        <li className="nav-item" id="nav-item">
           <Link to="/settings" className="nav-link">
             <i className="ion-gear-a"></i>&nbsp;Profile
           </Link>
         </li>
 
-        <li className="nav-item">
+        <li className="nav-item" id="nav-item">
           <Link
             to={`/`}
             className="nav-link">
@@ -60,11 +60,38 @@ const LoggedInView = props => {
           </Link>
         </li>
 
-        <li className="nav-item">
+        <li className="nav-item" id="nav-item">
           <Link to="/contact" className="nav-link">
             Contact
           </Link>
         </li>
+
+        
+        
+        <input type="checkbox" id="spoiler1"></input>
+        <label for="spoiler1"><img src={`./menu/menu.svg`} width="20" height="20" className="responsive"></img></label>
+        <div class="spoiler">
+        
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
+        
+          <Link to="/settings" className="nav-link">
+            Profile
+          </Link>
+       
+          <Link
+            to={`/`}
+            className="nav-link">
+            <img src={props.currentUser.image} className="user-pic" alt={props.currentUser.username} />
+
+          </Link>
+       
+          <Link to="/contact" className="nav-link">
+            Contact
+          </Link>
+       
+        </div>
 
       </nav>
       
@@ -77,11 +104,8 @@ const LoggedInView = props => {
 class Header extends React.Component {
   render() {
     return (
-      <section className="container-flex">
-        <Link to="/" className="navbar-brand">
-          {this.props.appName.toLowerCase()}
-        </Link>
-
+      <section className="">
+        
         <LoggedOutView currentUser={this.props.currentUser} />
 
         <LoggedInView currentUser={this.props.currentUser} />

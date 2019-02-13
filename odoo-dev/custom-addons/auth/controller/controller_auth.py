@@ -68,6 +68,7 @@ class Auth(http.Controller):
                     "user":{
                         "token":token,
                         "currentUser":{
+                            "id":searchUser[0]['id'],
                             "username":searchUser[0]['username'],
                             "email":searchUser[0]['email']
                         }
@@ -96,6 +97,7 @@ class Auth(http.Controller):
                 'search_read',[[['email', '=', decToken['user']['email']]],fields])
                 return {"user":{
                     "currentUser":{
+                                "id":searchUser[0]['id'],
                                 "username":searchUser[0]['username'],
                                 "email":searchUser[0]['email']
                             }}}

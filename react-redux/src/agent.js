@@ -110,9 +110,11 @@ const Articles = {
 };
 
 const Comments = {
-  create: (slug, comment) =>{
-    requests.postOdoo(`/comments`, { "slug":slug, "comment":comment })
-  }
+  create: (slug, comment, user) =>
+    requests.postOdoo(`/comments`, { "slug_device":slug, "comment":comment, "user":user }),
+  get: (id_slug) =>
+    requests.postOdoo(`/getComments`, { "device_id":id_slug })
+  
     
   /*delete: (slug, commentId) =>
     requests.del(`/articles/${slug}/comments/${commentId}`),

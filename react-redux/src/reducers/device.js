@@ -1,6 +1,8 @@
 import {
     DEVICE_PAGE_LOADED,
     DEVICE_PAGE_UNLOADED,
+    ADD_COMMENTS,
+    GET_COMMENTS
   } from '../constants/actionTypes';
   
   export default (state = {}, action) => {
@@ -15,6 +17,18 @@ import {
         };
       case DEVICE_PAGE_UNLOADED:
         return {};
+      case ADD_COMMENTS:
+        return {
+          ...state,
+          comments: action.payload,
+          
+        };
+      case GET_COMMENTS:
+        return {
+          ...state,
+          getComments: action.payload,
+          
+        };
       default:
         return state;
     }

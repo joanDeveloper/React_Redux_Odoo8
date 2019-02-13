@@ -47,26 +47,6 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    /*var data = null;
-    var xhr = new XMLHttpRequest();
-    //xhr.withCredentials = true;
-
-    xhr.addEventListener("readystatechange", function () {
-      if (this.readyState === 4) {
-        console.log(this.responseText);
-      }
-    });
-
-    xhr.open("GET", "http://localhost:8069/user");
-    xhr.setRequestHeader('Content-Type','text/xml');
-    xhr.setRequestHeader("Authorization", "Bearer token asdasdasd");
-    xhr.setRequestHeader("cache-control", "no-cache");
-    xhr.setRequestHeader('access-control-allow-headers','origin, x-csrftoken, content-type,authorization, accept');
-    xhr.setRequestHeader('Access-Control-Allow-Origin','*');
-    xhr.setRequestHeader('Access-Control-Allow-Methods','POST, GET, OPTIONS');
-    xhr.setRequestHeader('Access-Control-Max-Age',1000);
-
-    xhr.send();*/
     const token = window.localStorage.getItem('jwt');
      console.log("TOKEN APP",token);
      this.props.onLoad(token ? agent.User.current(token) : null, token);

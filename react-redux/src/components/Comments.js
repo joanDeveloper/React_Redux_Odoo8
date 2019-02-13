@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ADD_COMMENT } from '../constants/actionTypes';
+import { ADD_COMMENTS } from '../constants/actionTypes';
 import agent from '../agent';
 
 const mapStateToProps = state => ({
-    ...state.home,
-    token: state.common.token
+    token: state.common.token,
+    comments:state.device.comments
 });
 
 const mapDispatchToProps = dispatch => ({
     onSubmit: payload =>
-        dispatch({ type: ADD_COMMENT, payload })
+        dispatch({ type: ADD_COMMENTS, payload })
 });
 
 class Comments extends React.Component {
@@ -19,31 +19,57 @@ class Comments extends React.Component {
         this.state = { comment: '' };
     }
     componentWillMount() {
+        /* get_comments */
+        agent.Comments.get(this.props.id_device).then(res =>{
+            console.log("GET_COMMENTS",res);
+            
+        });
+        //////////////////////////
         this.setComment = ev => {
             console.log("set", ev.target.value);
             this.setState({ comment: ev.target.value })
         };
 
         this.createComment = ev => {
-            console.log("componentWillMount__COMMENTS", this.props);
+            //console.log("componentWillMount__COMMENTS", this.props);
             ev.preventDefault();
             if(!this.props.token) alert("No estas autenticado");
             else{
                 agent.User.current(this.props.token).then(res => {
                     console.log("RES_current_comment",res.result);
-                    !res.result.error ? agent.Comments.create(
-                        this.props.slug,
-                        this.state.comment) : false;
+                    let user_id = res.result.user.currentUser.id;
+                    if(!res.result.error){
+                        agent.Comments.create(
+                            this.props.id_device,
+                            this.state.comment,
+                            user_id
+                            ).then(response=>{
+                                console.log("res_commentario_create",response);
+                                if(!response.result.error){
+                                    this.props.onSubmit(response.result.comments)
+                                }
+                            });
+                    }
                     
-                    this.setState({ comment: '' });
-                    this.props.onSubmit(this.state.comment);
+                    /*this.setState({ comment: '' });
+                    this.props.onSubmit(this.state.comment);*/
                 });
             }
         };
     }
     render() {
-
+        console.log("COMMENTS",this.props.comments)
         return (
+            <span>
+                { this.props.comments ? (<section>
+                    {
+                        this.props.comments.map(res => {
+                            console.log("MAP_COMMENTS",res);
+                            return <li>{res.comment}</li>
+
+                        })
+                    }
+                </section>):(<span>Este producto no tiene comentarios todavia ...</span>) }
             <form className="card comment-form" onSubmit={this.createComment}>
                 <div className="card-block">
                     <textarea className="form-control"
@@ -62,6 +88,7 @@ class Comments extends React.Component {
                     </button>
                 </div>
             </form>
+            </span>
         );
     }
 }

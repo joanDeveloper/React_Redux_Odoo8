@@ -38,7 +38,7 @@ const Device = props => {
                             <p>Camera: {device.camera} pixels</p>
                             <p>Descripcion: {device.description}</p>
                             <p>Precio: {device.price} €</p>
-                            <Comments slug={device.slug}/>
+                            <Comments id_device={device.id}/>
                         </section>
                         
                     )
