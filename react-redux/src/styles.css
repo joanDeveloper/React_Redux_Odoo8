@@ -10,6 +10,13 @@ body {
   padding: 0.5%;
   clear: both; }
 
+.container-flex__column {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  padding: 1.5%;
+  text-align: center; }
+
 /* banner */
 .banners {
   background: linear-gradient(45deg, #cedbe9 0%, #aac5de 12%, #6199c7 20%, #3a84c3 51%, #419ad6 59%, #4bb8f0 71%, #3a8bc2 84%, #26558b 100%);
@@ -17,22 +24,30 @@ body {
   color: white; }
 
 /* nav menu */
+.container-nav {
+  margin-top: 2%;
+  margin-bottom: 4%; }
+
 .nav-item {
   float: left;
   list-style: none;
   margin-left: 15px; }
 
 .nav-link {
+  padding: 15%;
+  width: 100%;
   float: left;
   outline: none;
   text-decoration: none;
   color: black; }
 
 .nav-link:hover {
-  color: #258dc8;
-  padding: 6px;
-  font-size: 20px;
-  transition: 0.7s; }
+  color: #2c539e;
+  padding: 12%;
+  font-size: 120%;
+  transition: 1s;
+  border-radius: 15%;
+  text-align: center; }
 
 .responsive {
   display: none; }
@@ -208,3 +223,14 @@ input[id^="spoiler"] ~ .spoiler {
 input[id^="spoiler"]:checked + label + .spoiler {
   height: auto;
   opacity: 1; }
+
+.device-detail {
+  list-style: none;
+  margin-top: 2.5%; }
+
+.device-detail_list {
+  margin-bottom: 12%; }
+
+.device-media {
+  width: 35vw;
+  height: 35vw; }

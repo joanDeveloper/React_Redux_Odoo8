@@ -28,7 +28,18 @@ const LoggedOutView = props => {
             Contact
           </Link>
         </li>
-        <img src={`./menu/menu.svg`} width="20" height="20" className="responsive"></img>
+        <input type="checkbox" id="spoiler1"></input>
+        <label htmlFor="spoiler1"><img src={`./menu/menu.svg`} width="20" height="20" className="responsive"></img></label>
+        <div className="spoiler container-flex__column" style={{width:"33%"}}>
+          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/login" className="nav-link">
+            Sign in
+          </Link>
+          <Link to="/register" className="nav-link">
+            Sign up
+          </Link>
+          <Link to="/contact" className="nav-link">Contact</Link>
+        </div>
       </nav>
     );
   }
@@ -47,7 +58,7 @@ const LoggedInView = props => {
 
         <li className="nav-item" id="nav-item">
           <Link to="/settings" className="nav-link">
-            <i className="ion-gear-a"></i>&nbsp;Profile
+            Profile
           </Link>
         </li>
 
@@ -65,19 +76,16 @@ const LoggedInView = props => {
             Contact
           </Link>
         </li>
-
-        
         
         <input type="checkbox" id="spoiler1"></input>
         <label htmlFor="spoiler1"><img src={`./menu/menu.svg`} width="20" height="20" className="responsive"></img></label>
-        <div className="spoiler">
+        <div className="spoiler container-flex__column" style={{width:"33%"}}>
           <Link to="/" className="nav-link">Home</Link>
           <Link to="/settings" className="nav-link">Profile</Link>
           <Link
             to={`/`}
             className="nav-link">
             <img src={props.currentUser.image} className="user-pic" alt={props.currentUser.username} />
-
           </Link>
           <Link to="/contact" className="nav-link">Contact</Link>
         </div>

@@ -21,31 +21,36 @@ const Device = props => {
         props.onLoad(Promise.all([
             agent.Devices.detail(props.match.params.slug),
         ]));
-
     }, [])
 
     if (!props.device) return null;
     return (
-        <div className="article-page">
-            <h3>Details</h3>
+        <section>
             {
                 props.device.map(device => {
                     return (
-                        <section key={device.slug}>
-                            <p>Marca: {device.brand}</p>
-                            <p>Modelo: {device.model}</p>
-                            <p>Bateria: {device.battery} Mhz</p>
-                            <p>Camera: {device.camera} pixels</p>
-                            <p>Descripcion: {device.description}</p>
-                            <p>Precio: {device.price} €</p>
+                        <div key={device.slug}>
+                            <section className="container-flex">
+                                <article>
+                                    <img src={`../../media/devices/${device.media}.png`} 
+                                        className="device-media" 
+                                        alt={`imagen del producto ${device.brand}`} />
+                                </article>
+                                <article className="device-detail">
+                                    <li className="device-detail_list">Marca: {device.brand}</li>
+                                    <li className="device-detail_list">Modelo: {device.model}</li>
+                                    <li className="device-detail_list">Bateria: {device.battery} Mhz</li>
+                                    <li className="device-detail_list">Camera: {device.camera} pixels</li>
+                                    <li className="device-detail_list">Descripcion: {device.description}</li>
+                                    <li className="device-detail_list">Precio: {device.price} €</li>
+                                </article>
+                            </section>
                             <Comments id_device={device.id}/>
-                        </section>
-                        
+                        </div>
                     )
                 })
             }
-            
-        </div>
+        </section>
     )
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Device);

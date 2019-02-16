@@ -4,12 +4,21 @@
 
 /* GENERAL */
 body{ margin: 0; }
+
 .container-flex{
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
     padding: 0.5%;
     clear: both;
+}
+
+.container-flex__column{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    padding: 1.5%;
+    text-align: center;
 }
 
 /* banner */
@@ -20,12 +29,18 @@ body{ margin: 0; }
 }
 
 /* nav menu */
+.container-nav{
+    margin-top: 2%;
+    margin-bottom: 4%;
+}
 .nav-item{
     float: left;
     list-style: none;
     margin-left: 15px;
 }
 .nav-link{
+    padding: 15%;
+    width: 100%;
     float: left;
     outline: none;
     text-decoration:none;
@@ -33,10 +48,12 @@ body{ margin: 0; }
 }
 
 .nav-link:hover{
-    color:$color-nav;
-    padding: 6px;
-    font-size: 20px;
-    transition: 0.7s;
+    color: $color-nav;
+    padding: 12%;
+    font-size: 120%;
+    transition: 1s;
+    border-radius: 15%;
+    text-align: center;
 }
 
 .responsive{
@@ -167,29 +184,17 @@ footer{
 //////////
 
 @media only screen and (max-width : 640px) {
-    
     .nav-item{ display: none; }
-    
     .responsive {
         display: block;
         float: right;
         cursor: pointer;
         z-index: 10;
     }
-    
-    
 
 }
 
-@media only screen and (min-width : 640px) {
-    
-    .spoiler{
-        display: none;
-    }
-    
-    
-
-}
+@media only screen and (min-width : 640px) { .spoiler{ display: none;} }
 
 /* Ocultar boton radio */
 input[id^="spoiler"]{ display: none; }
@@ -214,4 +219,16 @@ input[id^="spoiler"] ~ .spoiler {
 input[id^="spoiler"]:checked + label + .spoiler{
     height: auto;
     opacity: 1;
+}
+/////////
+.device-detail{ 
+    list-style: none;
+    margin-top: 2.5%;
+}
+.device-detail_list{
+    margin-bottom: 12%;
+}
+.device-media{
+    width: 35vw; 
+    height: 35vw; 
 }

@@ -28,7 +28,7 @@ class CommentsController(http.Controller):
 
         fields = ['comment','user_id','device_id']
         search = self._models.execute_kw(self._db, self._uid, self._password,'comment.items',
-        'search_read',[[['device_id', 'like', data['slug_device']]],fields])
+        'search_read',[[['device_id', '=', data['slug_device']]],fields])
         
         cont = 0
         for user in search:
@@ -43,11 +43,11 @@ class CommentsController(http.Controller):
     def getComment(self):
         print("ENTRA EN GET_COMMENTS")
         data = request.jsonrequest
-        
+        print(data['device_id'])
         fields = ['comment','user_id','device_id']
         searchComments = self._models.execute_kw(self._db, self._uid, self._password,'comment.items',
-        'search_read',[[['device_id', 'like', data['device_id']]],fields])
-        
+        'search_read',[[['device_id', '=', data['device_id']]],fields])
+        print(searchComments)
         cont = 0
         for user in searchComments:
             searchUser = self._models.execute_kw(self._db, self._uid, self._password,'auth.user',

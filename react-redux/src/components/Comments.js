@@ -21,6 +21,7 @@ class Comments extends React.Component {
         super();
         this.state = { comment: '' };
     }
+    
     componentWillMount() {
         this.props.getComments(agent.Comments.get(this.props.id_device));
         this.setComment = ev => { this.setState({ comment: ev.target.value }) };
