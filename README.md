@@ -21,4 +21,4 @@
     9. Carousel (react-responsive-carousel)
     10. Optimization Credentials in backend odoo
     11. Connect and adapt odoo backend to make requests
-    12. Device's Comments (Developing ...)
+    12. Device's Comments

@@ -26,7 +26,7 @@ import {
       case GET_COMMENTS:
         return {
           ...state,
-          getComments: action.payload,
+          comments: action.payload.result.comments,
           
         };
       default:

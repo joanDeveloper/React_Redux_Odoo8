@@ -69,35 +69,22 @@ const LoggedInView = props => {
         
         
         <input type="checkbox" id="spoiler1"></input>
-        <label for="spoiler1"><img src={`./menu/menu.svg`} width="20" height="20" className="responsive"></img></label>
-        <div class="spoiler">
-        
-          <Link to="/" className="nav-link">
-            Home
-          </Link>
-        
-          <Link to="/settings" className="nav-link">
-            Profile
-          </Link>
-       
+        <label htmlFor="spoiler1"><img src={`./menu/menu.svg`} width="20" height="20" className="responsive"></img></label>
+        <div className="spoiler">
+          <Link to="/" className="nav-link">Home</Link>
+          <Link to="/settings" className="nav-link">Profile</Link>
           <Link
             to={`/`}
             className="nav-link">
             <img src={props.currentUser.image} className="user-pic" alt={props.currentUser.username} />
 
           </Link>
-       
-          <Link to="/contact" className="nav-link">
-            Contact
-          </Link>
-       
+          <Link to="/contact" className="nav-link">Contact</Link>
         </div>
-
       </nav>
       
     );
   }
-
   return null;
 };
 
@@ -105,13 +92,10 @@ class Header extends React.Component {
   render() {
     return (
       <section className="">
-        
         <LoggedOutView currentUser={this.props.currentUser} />
-
         <LoggedInView currentUser={this.props.currentUser} />
       </section>
     );
   }
 }
-
 export default Header;
