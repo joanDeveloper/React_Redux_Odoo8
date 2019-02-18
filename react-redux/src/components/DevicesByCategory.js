@@ -26,7 +26,7 @@ const DevicesByCategory = props => {
     if (props.devicesByCategory) props.devicesByCategories.listDevicesByCategory = props.devicesByCategory;
 
     return (
-        <div className="article-page">
+        <div className="article-page" key={props.match.params.slug}>
             <DeviceList
                 pager={props.pager}
                 devices={props.devicesByCategories.listDevicesByCategory}

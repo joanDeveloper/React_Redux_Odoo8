@@ -13,6 +13,23 @@ const MainView = props => {
   return (
     <span>
       <IntegrationDownshift token={props.token} />
+      <section>
+        <aside className="container-home">
+          <img src="../../media/home/dis1.svg" width="150" height="150" />
+          <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+            </p>
+        </aside>
+
+        <aside className="container-home">
+          <img src="../../media/home/dis2.svg" width="150" height="150" />
+          <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+          Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
+            </p>
+        </aside>
+      </section>
       <section className="container-categories">
         <CategoriesList
           categories={props.categories}
@@ -26,7 +43,7 @@ const MainView = props => {
           devicesCount={props.devicesCount}
           currentPage={props.currentPage} />
       </section>
-      <Offers device={props.devices} token={props.token}/>
+      <Offers device={props.devices} token={props.token} />
     </span>
   );
 };

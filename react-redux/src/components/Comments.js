@@ -49,17 +49,16 @@ class Comments extends React.Component {
         };
     }
     render() {
-        console.log("COMMENTS",this.props.comments)
         console.log("COMMEN-----TS",this.props)
         return (
             <span>
                 {
                     this.props.comments ? 
                     (
-                        <section>
-                            {<BottomAppBar comments={this.props.comments}/>}
-                        </section>
-                    ):(<span>Este producto no tiene comentarios todavia ...</span>) 
+                        <section>{<BottomAppBar comments={this.props.comments}/>}</section>
+                    ):(
+                        <span>Este producto no tiene comentarios todavia ...</span>
+                    ) 
                 }
             <h4>Comenta nuestros productos</h4>
             <form className="card comment-form" onSubmit={this.createComment}>

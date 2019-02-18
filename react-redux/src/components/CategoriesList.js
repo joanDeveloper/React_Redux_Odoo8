@@ -9,7 +9,7 @@ const CategoriesList = props => {
   }
 
   return (
-    <div>
+    <section>
       {
         props.categories.map(categories => {
           return (
@@ -22,7 +22,7 @@ const CategoriesList = props => {
         })
       }
 
-    </div>
+    </section>
   );
 };
 

@@ -48,16 +48,13 @@ class Home extends React.Component {
   componentWillUnmount() {
     this.props.onUnload();
   }
-  //<Banner appName={this.props.appName} />
+  //<Banner appName={this.props.appName} /> <AlertDialogSlide />
   render() {
     return (
-      <div className="home-page">
+      <section className="home-page">
         <DemoCarousel />
-        <div className="container page">
-          <MainView token={this.props.token} />
-          <AlertDialogSlide />
-        </div>
-      </div>
+        <MainView token={this.props.token} />
+      </section>
     );
   }
 }

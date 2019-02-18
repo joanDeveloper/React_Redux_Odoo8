@@ -17,6 +17,26 @@ body {
   padding: 1.5%;
   text-align: center; }
 
+.clean {
+  clear: both; }
+
+.container-home {
+  text-align: center;
+  float: left;
+  width: 20vw;
+  margin-left: 16%;
+  margin-bottom: 7%; }
+
+.container-home > p {
+  width: 33vw; }
+
+@media (max-width: 640px) {
+  .container-home {
+    float: none;
+    margin-left: 22%; }
+  .container-home > p {
+    width: 63vw; } }
+
 /* banner */
 .banners {
   background: linear-gradient(45deg, #cedbe9 0%, #aac5de 12%, #6199c7 20%, #3a84c3 51%, #419ad6 59%, #4bb8f0 71%, #3a8bc2 84%, #26558b 100%);
@@ -83,6 +103,7 @@ body {
 
 /* container categories */
 .container-categories {
+  clear: both;
   margin-left: 40vw;
   margin-bottom: 2%; }
 
@@ -234,3 +255,7 @@ input[id^="spoiler"]:checked + label + .spoiler {
 .device-media {
   width: 35vw;
   height: 35vw; }
+
+.adaptable {
+  width: 25vw;
+  margin-bottom: 10%; }
