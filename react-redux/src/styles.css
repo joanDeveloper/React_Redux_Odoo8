@@ -1,7 +1,26 @@
 /* colors */
+/* font families */
+@import url("https://fonts.googleapis.com/css?family=Lato");
+@import url("https://fonts.googleapis.com/css?family=Coiny");
+/* icons */
+@import url("http://weloveiconfonts.com/api/?family=zocial");
 /* GENERAL */
+.title-principal {
+  margin-bottom: 7%; }
+
+[class*="zocial-"]:before {
+  font-family: 'zocial', sans-serif;
+  cursor: pointer; }
+
+.delete-style {
+  list-style: none; }
+
 body {
-  margin: 0; }
+  margin: 0;
+  font-family: 'Lato', sans-serif; }
+
+.font-family__coiny {
+  font-family: 'Coiny', cursive; }
 
 .container-flex {
   display: flex;
@@ -81,6 +100,9 @@ body {
   padding: 15px;
   cursor: pointer; }
 
+.button:hover {
+  background-color: #1f87c4; }
+
 /* button categories */
 .button span {
   cursor: pointer;
@@ -113,12 +135,24 @@ body {
 
 .page-item {
   list-style: none;
-  margin-left: 0.8%; }
+  margin-left: 1.5%; }
+
+@keyframes desplazar_page {
+  from {
+    transform: translate(1px); }
+  to {
+    transform: translate(-1px); } }
+
+.active {
+  animation-duration: 0.5s;
+  animation-name: desplazar_page;
+  animation-direction: alternate;
+  animation-iteration-count: infinite; }
 
 .page-link {
   text-decoration: none;
   box-shadow: 1px 1px 1px 1px grey;
-  padding: 35%;
+  padding: 75%;
   border-radius: 5px;
   border: none; }
 
@@ -129,7 +163,7 @@ body {
 .container-device {
   margin-left: 15%; }
 
-.device-preview-list {
+.device-preview__list {
   float: left;
   width: 20vw;
   box-shadow: 2px 2px 2px 2px #356aa0;
@@ -138,7 +172,7 @@ body {
   border-radius: 5px;
   padding: 10px; }
 
-.device-preview-offers {
+.device-preview__offers {
   float: left;
   width: 20vw;
   box-shadow: 2px 2px 2px 2px #356aa0;
@@ -147,11 +181,11 @@ body {
   border-radius: 5px;
   padding: 10px; }
 
-.device-preview-offers:hover {
+.device-preview__offers:hover {
   transition: 1s;
   transform: rotate(360deg); }
 
-.device-preview-list:hover {
+.device-preview__list:hover {
   animation-duration: 0.5s;
   animation-name: desplazar_box;
   animation-direction: alternate;
@@ -165,36 +199,50 @@ body {
 
 /* link list device (Link)*/
 .preview-link {
-  text-decoration: none; }
+  text-decoration: none;
+  text-align: center; }
+
+.media-item {
+  width: 20vw;
+  height: 20vw; }
 
 /* media query box */
 @media (max-width: 900px) {
-  .device-preview-list, .device-preview-offers {
+  .device-preview__list, .device-preview__offers {
     width: 30vw; }
   .container-categories {
-    margin-bottom: 5%; } }
+    margin-bottom: 5%; }
+  .media-item {
+    width: 25vw;
+    height: 25vw; } }
 
 @media (max-width: 770px) {
-  .device-preview-list, .device-preview-offers {
+  .device-preview__list, .device-preview__offers {
     width: 25vw; }
   .container-categories {
     margin-left: 28vw;
     margin-bottom: 5%; } }
 
 @media (max-width: 555px) {
-  .device-preview-list, .device-preview-offers {
+  .device-preview__list, .device-preview__offers {
     width: 60vw; }
   .container-categories {
     margin-left: 24vw;
-    margin-bottom: 12%; } }
+    margin-bottom: 12%; }
+  .media-item {
+    width: 57vw;
+    height: 57vw; } }
 
 @media (max-width: 418px) {
   .container-categories {
     margin-left: 18vw;
-    margin-bottom: 12%; } }
+    margin-bottom: 12%; }
+  .media-item {
+    width: 63vw;
+    height: 63vw; } }
 
 @media (max-width: 288px) {
-  .device-preview-list, .device-preview-offers {
+  .device-preview__list, .device-preview__offers {
     width: 10vw; }
   .container-categories {
     margin-left: 10vw;
@@ -204,8 +252,17 @@ body {
 footer {
   background: linear-gradient(45deg, #cedbe9 0%, #aac5de 12%, #6199c7 20%, #3a84c3 51%, #419ad6 59%, #4bb8f0 71%, #3a8bc2 84%, #26558b 100%);
   padding: 30px;
-  color: white;
-  clear: both; }
+  color: #2c539e;
+  clear: both;
+  height: 100px; }
+
+.footer-sections {
+  float: left;
+  margin-right: 5%; }
+
+.footer-socialogin {
+  float: left;
+  margin-right: 1%; }
 
 @media only screen and (max-width: 640px) {
   .nav-item {
@@ -227,7 +284,6 @@ input[id^="spoiler"] {
 /* boton clicable */
 input[id^="spoiler"] + label {
   display: block;
-  /*width: 20px;*/
   padding: 5px 20px;
   cursor: pointer; }
 
@@ -245,9 +301,19 @@ input[id^="spoiler"]:checked + label + .spoiler {
   height: auto;
   opacity: 1; }
 
+.device-list__color {
+  color: black; }
+
+.device-list__price {
+  margin-top: 5%;
+  background: #2c539e;
+  padding: 4%;
+  color: white; }
+
 .device-detail {
   list-style: none;
-  margin-top: 2.5%; }
+  margin-top: 2.5%;
+  margin-left: 15%; }
 
 .device-detail_list {
   margin-bottom: 12%; }
@@ -256,6 +322,23 @@ input[id^="spoiler"]:checked + label + .spoiler {
   width: 35vw;
   height: 35vw; }
 
+@media only screen and (max-width: 640px) {
+  .device-media {
+    width: 60vw;
+    height: 60vw; } }
+
+@media only screen and (max-width: 450px) {
+  .device-media {
+    width: 70vw;
+    height: 70vw; } }
+
 .adaptable {
   width: 25vw;
   margin-bottom: 10%; }
+
+/* forms */
+.form-control {
+  width: 95vw;
+  padding: 1%;
+  border-radius: 5%;
+  margin-bottom: 2%; }

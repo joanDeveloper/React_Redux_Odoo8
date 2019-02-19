@@ -2,8 +2,26 @@
 @import './variables.scss';
 @import './mixins.scss';
 
+/* font families */
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Coiny');
+/* icons */
+@import url("http://weloveiconfonts.com/api/?family=zocial");
+
 /* GENERAL */
-body{ margin: 0; }
+.title-principal{ margin-bottom: 7%;}
+
+[class*="zocial-"]:before { 
+    font-family: 'zocial', sans-serif; 
+    cursor: pointer; 
+}
+
+.delete-style{ list-style: none; }
+body{ 
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+}
+.font-family__coiny{ font-family: 'Coiny', cursive; }
 
 .container-flex{
     display: flex;
@@ -30,9 +48,7 @@ body{ margin: 0; }
     margin-left:16%;
     margin-bottom: 7%;
 }
-.container-home>p{
-    width: 33vw;
-}
+.container-home>p{ width: 33vw; }
 
 @media (max-width: 640px) {
     .container-home{
@@ -91,6 +107,11 @@ body{ margin: 0; }
     cursor: pointer;
     
   }
+
+  .button:hover {
+    background-color: $color-button-hover;
+    
+  }
     /* button categories */
     .button span {
         cursor: pointer;
@@ -123,14 +144,27 @@ body{ margin: 0; }
 .container-pagination{
     margin-top: 0%;
 }
+
 .page-item{
     list-style: none;
-    margin-left: 0.8%;
+    margin-left: 1.5%;
+}
+
+@keyframes desplazar_page {
+    from {transform: translate(1px);}
+    to{transform: translate(-1px);}
+}
+
+.active{
+    animation-duration: 0.5s;
+    animation-name: desplazar_page;
+    animation-direction: alternate;
+    animation-iteration-count: infinite
 }
 .page-link{
     text-decoration: none;
     box-shadow: 1px 1px 1px 1px grey;
-    padding: 35%;
+    padding: 75%;
     border-radius: 5px;
     border: none;
     
@@ -140,10 +174,10 @@ body{ margin: 0; }
 .categories{ margin-left: 10px; }
 .container-device{ margin-left: 15%; }
 
-    .device-preview-list{ @include box-item(); }
-    .device-preview-offers{ @include box-item($color-banner); }
-    .device-preview-offers:hover{ @include rotate_360(); }
-    .device-preview-list:hover{ 
+    .device-preview__list{ @include box-item(); }
+    .device-preview__offers{ @include box-item($color-banner); }
+    .device-preview__offers:hover{ @include rotate_360(); }
+    .device-preview__list:hover{ 
         animation-duration: 0.5s;
         animation-name: desplazar_box;
         animation-direction: alternate;
@@ -156,28 +190,44 @@ body{ margin: 0; }
 
 
 /* link list device (Link)*/
-.preview-link{ text-decoration: none; }
+.preview-link{ 
+    text-decoration: none;
+    text-align: center;
+}
+.media-item{
+    width: 20vw;
+    height: 20vw;
+}
 
 /* media query box */
 @media (max-width: 900px) {
-    .device-preview-list, .device-preview-offers { width: 30vw; }
+    .device-preview__list, .device-preview__offers { width: 30vw; }
     .container-categories{ margin-bottom: 5%; }
+    .media-item{
+        width: 25vw;
+        height: 25vw;
+    } 
 }
 
 @media (max-width: 770px) {
-    .device-preview-list,.device-preview-offers { width: 25vw; }
+    .device-preview__list,.device-preview__offers { width: 25vw; }
     .container-categories{
         margin-left: 28vw;
         margin-bottom: 5%;
     }
+    
 }
 
 @media (max-width: 555px) {
-    .device-preview-list, .device-preview-offers { width: 60vw; }
+    .device-preview__list, .device-preview__offers { width: 60vw; }
     .container-categories{
         margin-left: 24vw;
         margin-bottom: 12%;
     }
+    .media-item{
+        width: 57vw;
+        height: 57vw;
+    } 
 }
 
 @media (max-width: 418px) {
@@ -185,10 +235,14 @@ body{ margin: 0; }
         margin-left: 18vw;
         margin-bottom: 12%;
     }
+    .media-item{
+        width: 63vw;
+        height: 63vw;
+    } 
 }
 
 @media (max-width: 288px) {
-    .device-preview-list, .device-preview-offers { width: 10vw; }
+    .device-preview__list, .device-preview__offers { width: 10vw; }
     .container-categories{
         margin-left: 10vw;
         margin-bottom: 12%;
@@ -199,8 +253,17 @@ body{ margin: 0; }
 footer{
     background:$color-banner;
     padding:30px;
-    color: $color-white;
+    color:$color-nav;
     clear: both;
+    height: 100px;
+}
+.footer-sections{
+    float: left;
+    margin-right: 5%;
+}
+.footer-socialogin{
+    float: left;
+    margin-right: 1%;
 }
 
 //////////
@@ -224,7 +287,6 @@ input[id^="spoiler"]{ display: none; }
 /* boton clicable */
 input[id^="spoiler"] + label {
     display: block;
-    /*width: 20px;*/
     padding: 5px 20px;
     cursor: pointer;
 }
@@ -243,18 +305,51 @@ input[id^="spoiler"]:checked + label + .spoiler{
     opacity: 1;
 }
 /////////
+.device-list__color{ color:$color-black; }
+.device-list__price{
+    margin-top: 5%;
+    background: $color-nav;
+    padding: 4%;
+    color: $color-white;
+}
 .device-detail{ 
     list-style: none;
     margin-top: 2.5%;
+    margin-left: 15%;
 }
 .device-detail_list{
     margin-bottom: 12%;
 }
 .device-media{
-    width: 35vw; 
-    height: 35vw; 
+   width: 35vw;
+   height: 35vw;
 }
+
+@media only screen and (max-width : 640px) {
+    .device-media{
+        width: 60vw;
+        height: 60vw;
+     }
+
+}
+
+@media only screen and (max-width : 450px) {
+    .device-media{
+        width: 70vw;
+        height: 70vw;
+     }
+
+}
+
 .adaptable{
     width: 25vw;
     margin-bottom: 10%;
+}
+
+/* forms */
+.form-control{
+    width: 95vw;
+    padding: 1%;
+    border-radius: 5%;
+    margin-bottom: 2%;
 }

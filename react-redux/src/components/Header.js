@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const LoggedOutView = props => {
   if (!props.currentUser) {
     return (
-      <nav className="container-nav">
+      <nav className="container-nav font-family__coiny">
         <li className="nav-item">
           <Link to="/" className="nav-link">
             Home
@@ -49,7 +49,7 @@ const LoggedOutView = props => {
 const LoggedInView = props => {
   if (props.currentUser) {
     return (
-      <nav className="container-nav">
+      <nav className="container-nav font-family__coiny">
         <li className="nav-item" id="nav-item">
           <Link to="/" className="nav-link">
             Home
@@ -63,11 +63,8 @@ const LoggedInView = props => {
         </li>
 
         <li className="nav-item" id="nav-item">
-          <Link
-            to={`/`}
-            className="nav-link">
-            <img src={props.currentUser.image} className="user-pic" alt={props.currentUser.username} />
-
+          <Link to={`/`} className="nav-link">
+            {props.currentUser.username}
           </Link>
         </li>
 
@@ -78,14 +75,14 @@ const LoggedInView = props => {
         </li>
         
         <input type="checkbox" id="spoiler1"></input>
-        <label htmlFor="spoiler1"><img src={`./menu/menu.svg`} width="20" height="20" className="responsive"></img></label>
+        <label htmlFor="spoiler1"><img src={`./menu/menu.svg`} width="20" height="20" className="responsive" alt="menu responsive"></img></label>
         <div className="spoiler container-flex__column" style={{width:"33%"}}>
           <Link to="/" className="nav-link">Home</Link>
           <Link to="/settings" className="nav-link">Profile</Link>
           <Link
             to={`/`}
             className="nav-link">
-            <img src={props.currentUser.image} className="user-pic" alt={props.currentUser.username} />
+            {props.currentUser.username}
           </Link>
           <Link to="/contact" className="nav-link">Contact</Link>
         </div>

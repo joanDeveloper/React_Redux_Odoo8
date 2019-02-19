@@ -14,8 +14,9 @@ const MainView = props => {
     <span>
       <IntegrationDownshift token={props.token} />
       <section>
+        <h1 align="center" className="title-principal">Nuestros servicios</h1>
         <aside className="container-home">
-          <img src="../../media/home/dis1.svg" width="150" height="150" />
+          <img src="../../media/home/dis1.svg" width="150" height="150" alt=""/>
           <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
           Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
           Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
@@ -23,7 +24,7 @@ const MainView = props => {
         </aside>
 
         <aside className="container-home">
-          <img src="../../media/home/dis2.svg" width="150" height="150" />
+          <img src="../../media/home/dis2.svg" width="150" height="150" alt=""/>
           <p>Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
           Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
           Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem

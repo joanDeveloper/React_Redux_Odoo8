@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ADD_COMMENTS,GET_COMMENTS } from '../constants/actionTypes';
+import { ADD_COMMENTS, GET_COMMENTS } from '../constants/actionTypes';
 import agent from '../agent';
 import BottomAppBar from './React-material-ui/BottomAppBar';
 
 const mapStateToProps = state => ({
     token: state.common.token,
-    comments:state.device.comments,
+    comments: state.device.comments,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -21,68 +21,68 @@ class Comments extends React.Component {
         super();
         this.state = { comment: '' };
     }
-    
+
     componentWillMount() {
         this.props.getComments(agent.Comments.get(this.props.id_device));
         this.setComment = ev => { this.setState({ comment: ev.target.value }) };
 
         this.createComment = ev => {
             ev.preventDefault();
-            if(!this.props.token) alert("No estas autenticado");
-            else{
+            if (!this.props.token) alert("No estas autenticado");
+            else {
                 agent.User.current(this.props.token).then(res => {
-                    console.log("RES_current_comment",res.result);
-                    if(!res.result.error){
+                    console.log("RES_current_comment", res.result);
+                    if (!res.result.error) {
                         let user_id = res.result.user.currentUser.id;
                         agent.Comments.create(
                             this.props.id_device,
                             this.state.comment,
                             user_id
-                            ).then(response=>{
-                                if(!response.result.error){
-                                    this.props.onSubmit(response.result.comments)
-                                }
-                            });
+                        ).then(response => {
+                            if (!response.result.error) {
+                                this.props.onSubmit(response.result.comments)
+                            }
+                        });
                     }
                 });
             }
         };
     }
     render() {
-        console.log("COMMEN-----TS",this.props)
+        console.log("COMMEN-----TS", this.props)
         return (
-            <span>
+            <section>
+                
                 {
-                    this.props.comments ? 
-                    (
-                        <section>{<BottomAppBar comments={this.props.comments}/>}</section>
-                    ):(
-                        <span>Este producto no tiene comentarios todavia ...</span>
-                    ) 
+                    this.props.comments ?
+                        (
+                            <article>{<BottomAppBar comments={this.props.comments} />}</article>
+                        ) : (
+                            <span>Cargando comentarios ...</span>
+                        )
                 }
-            <h4>Comenta nuestros productos</h4>
-            <form className="card comment-form" onSubmit={this.createComment}>
-                <div className="card-block">
+                <br />
+                <form onSubmit={this.createComment}>
+                    <label htmlFor="comments">Comenta nuestros productos</label><br />
                     <textarea className="form-control"
                         placeholder="Tu comentario aqui ..."
                         value={this.state.comment}
                         onChange={this.setComment}
                         rows="10"
                         cols="50"
+                        id="comments"
                     />
-                </div>
-                <div className="card-footer">
                     <button
-                        className="btn btn-sm btn-primary"
+                        className="button"
                         type="submit">
                         Enviar comentario
                     </button>
-                </div>
-            </form>
-            
-            </span>
+                </form>
+                <br />
 
-            
+            </section>
+
+
         );
     }
 }

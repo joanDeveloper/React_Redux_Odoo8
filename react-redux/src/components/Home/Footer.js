@@ -4,8 +4,14 @@ import React from 'react';
 const Footer = ({ appName }) => {
   return (
     <footer>
-        <h1>{appName}</h1>
-        <p>FOOTER</p>
+      <h3 className="footer-sections">{appName}</h3>
+      <span>Mis redes sociales:</span>
+      <section id="social" className="delete-style">
+        <li class="zocial-twitter footer-socialogin"></li>
+        <li class="zocial-facebook footer-socialogin"></li>
+        <li class="zocial-instagram footer-socialogin"></li>
+      </section>
+
     </footer>
   );
 };

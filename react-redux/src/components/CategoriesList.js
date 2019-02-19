@@ -15,7 +15,7 @@ const CategoriesList = props => {
           return (
             
               <Link to={`/devices/category/${categories.name}`} className="categories" key={categories.name}>
-                <span className="button"><span>{categories.name}</span> </span>
+                <span className="button font-family__coiny"><span>{categories.name}</span> </span>
               </Link>
             
           );

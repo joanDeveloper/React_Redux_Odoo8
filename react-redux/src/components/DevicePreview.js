@@ -7,13 +7,16 @@ const DevicePreview = props => {
   const device = props.device;
 
   return (
-    <div className={props.class} key={device.slug}>
+    <section className={props.class} key={device.slug}>
       <Link to={`/device/${device.slug}`} className="preview-link">
-        <img src={`../../media/devices/${device.media}.png`} alt={device.media} style={{ width: 150, height: 150 }} />
-        <p><strong>{device.brand}</strong></p>
-        <p>price: {device.price} €</p>
+        <img src={`../../media/devices/${device.media}.png`} alt={`producto ${device.media}`} className="media-item"/>
+        <div className="delete-style device-list__color">
+          <li><strong>{device.brand}</strong></li>
+          <li className="device-list__price">price: {device.price} €</li>
+        </div>
+        
       </Link>
-    </div>
+    </section>
   );
 }
 
