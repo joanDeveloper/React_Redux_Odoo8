@@ -39,7 +39,7 @@ class SettingsForm extends React.Component {
   }
 
   componentWillMount() {
-    console.log("this.props.currentUser",this.props.currentUser)
+    console.log("this.props.currentUser", this.props.currentUser)
     if (this.props.currentUser) {
       Object.assign(this.state, {
         //image: this.props.currentUser.image || '',
@@ -64,62 +64,83 @@ class SettingsForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.submitForm}>
-        <fieldset>
+        <fieldset className="form-settings">
+          <legend><strong>Información Personal</strong></legend><br/>
 
-          <fieldset className="form-group">
-            <input
-              className="form-control"
-              type="text"
-              placeholder="URL of profile picture"
-              value={this.state.image}
-              onChange={this.updateState('image')} />
-          </fieldset>
+          <label htmlFor="url">Url profile picture:</label><br />
+          <input
+            id="url"
+            className="input-form"
+            type="text"
+            placeholder="URL of profile picture"
+            value={this.state.image}
+            required
+            pattern={/[A-Za-z]{4-12}/}
+            onChange={this.updateState('image')} /><br />
 
-          <fieldset className="form-group">
-            <input
-              className="form-control form-control-lg"
-              type="text"
-              placeholder="Username"
-              value={this.state.username}
-              onChange={this.updateState('username')} />
-          </fieldset>
 
-          <fieldset className="form-group">
-            <textarea
-              className="form-control form-control-lg"
-              rows="8"
-              placeholder="Short bio about you"
-              value={this.state.bio}
-              onChange={this.updateState('bio')}>
-            </textarea>
-          </fieldset>
 
-          <fieldset className="form-group">
-            <input
-              className="form-control form-control-lg"
-              type="email"
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.updateState('email')} />
-          </fieldset>
+          <label htmlFor="username">Username:</label><br />
+          <input
+            id="username"
+            className="input-form"
+            type="text"
+            placeholder="Username"
+            value={this.state.username}
+            required
+            pattern={/[A-Za-z]{4-12}/}
+            onChange={this.updateState('username')} /><br />
 
-          <fieldset className="form-group">
-            <input
-              className="form-control form-control-lg"
-              type="password"
-              placeholder="New Password"
-              value={this.state.password}
-              onChange={this.updateState('password')} />
-          </fieldset>
 
+
+          <label htmlFor="bio">Bio:</label><br />
+          <textarea
+            id="bio"
+            className="input-form"
+            rows="8"
+            placeholder="Short bio about you"
+            value={this.state.bio}
+            required
+            pattern={/[A-Za-z]{5-110}/}
+            onChange={this.updateState('bio')}>
+          </textarea><br />
+
+
+
+          <label htmlFor="email">Email:</label><br />
+          <input
+            id="email"
+            className="input-form"
+            type="email"
+            placeholder="Email"
+            value={this.state.email}
+            required
+            pattern={/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/}
+            onChange={this.updateState('email')} /><br />
+
+
+
+          <label htmlFor="password">Password:</label><br />
+          <input
+            id="password"
+            className="input-form"
+            type="password"
+            placeholder="New Password"
+            value={this.state.password}
+            required
+            pattern={/[A-Za-z0-9]{4-12}/}
+            onChange={this.updateState('password')} /><br />
+
+          <br />
           <button
-            className="btn btn-lg btn-primary pull-xs-right"
+            className="button"
             type="submit"
             disabled={this.state.inProgress}>
             Update Settings
           </button>
 
         </fieldset>
+
       </form>
     );
   }
@@ -140,31 +161,22 @@ const mapDispatchToProps = dispatch => ({
 class Settings extends React.Component {
   render() {
     return (
-      <div className="settings-page">
-        <div className="container page">
-          <div className="row">
-            <div className="col-md-6 offset-md-3 col-xs-12">
+      <section>
+        <h1 className="title-principal" align="center">Your Settings</h1>
+        <ListErrors errors={this.props.errors}></ListErrors>
 
-              <h1 className="text-xs-center">Your Settings</h1>
+        <SettingsForm
+          currentUser={this.props.currentUser}
+          onSubmitForm={this.props.onSubmitForm} />
 
-              <ListErrors errors={this.props.errors}></ListErrors>
+        <br />
+        <button
+          className="button"
+          onClick={this.props.onClickLogout}>
+          Or click here to logout.
+        </button>
 
-              <SettingsForm
-                currentUser={this.props.currentUser}
-                onSubmitForm={this.props.onSubmitForm} />
-
-              <hr />
-
-              <button
-                className="btn btn-outline-danger"
-                onClick={this.props.onClickLogout}>
-                Or click here to logout.
-              </button>
-
-            </div>
-          </div>
-        </div>
-      </div>
+      </section>
     );
   }
 }

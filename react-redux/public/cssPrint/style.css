@@ -1,0 +1,6 @@
+
+@media print {
+    .device-preview__offers{
+        background: blue;
+    }
+}  

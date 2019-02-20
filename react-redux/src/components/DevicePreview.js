@@ -8,7 +8,7 @@ const DevicePreview = props => {
 
   return (
     <section className={props.class} key={device.slug}>
-      <Link to={`/device/${device.slug}`} className="preview-link">
+      <Link to={`/device/${device.slug}`} className="preview-link" tabIndex="0">
         <img src={`../../media/devices/${device.media}.png`} alt={`producto ${device.media}`} className="media-item"/>
         <div className="delete-style device-list__color">
           <li><strong>{device.brand}</strong></li>

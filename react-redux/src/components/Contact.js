@@ -9,7 +9,7 @@ import {
 } from '../constants/actionTypes';
 import { Field, reduxForm } from 'redux-form'
 import { required, maxLength15, maxLength55, emails } from '../utils/helpers'
-import {renderField, renderTextArea} from './FormFields'
+import { renderField, renderTextArea } from './FormFields'
 
 const mapStateToProps = state => ({ ...state.contact });
 
@@ -45,11 +45,11 @@ class Contact extends React.Component {
     }
 
     componentWillUnmount() {
-        
+
         this.props.onUnload();
     }
 
-    render() { 
+    render() {
         console.log("PROPS_CONTACT", this.props);
         const email = this.props.email;
         const subject = this.props.subject;
@@ -57,48 +57,43 @@ class Contact extends React.Component {
         const comment = this.props.comment;
 
         return (
-            <div className="auth-page">
-                <div className="container page">
-                    <div className="row">
-                        <div className="col-md-6 offset-md-3 col-xs-12">
-                            <h3>Contacte con nosotros</h3><br />
-                            <ListErrors errors={this.props.errors} />
+            <section>
+                <h3 align="center">Contacte con nosotros</h3><br />
+                <ListErrors errors={this.props.errors} />
 
-                            <form onSubmit={this.submitForm(name, email, subject, comment)}>
-                                <fieldset>
-                                    <Field name="name" type="text"
-                                        component={renderField} label="Name"
-                                        validate={[required, maxLength15]}
-                                        value={this.props.name || ''}
-                                        onChange={this.changeName}
-                                    />
-                                    <Field name="subject" type="text"
-                                        component={renderField} label="Subject"
-                                        validate={[required, maxLength15]}
-                                        value={this.props.subject || ''}
-                                        onChange={this.changeSubject}
-                                    />
-                                    <Field name="email" type="email"
-                                        component={renderField} label="Email"
-                                        validate={[required, emails]}
-                                        value={this.props.email || ''}
-                                        onChange={this.changeEmail}
-                                    />
-                                    <Field name="comment" type="textbox"
-                                        component={renderTextArea} label="Comment"
-                                        validate={[required, maxLength55]}
-                                        value={this.props.comment || ''}
-                                        onChange={this.changeComment}
-                                    />
+                <form onSubmit={this.submitForm(name, email, subject, comment)}>
+                    <fieldset>
+                        <Field name="name" type="text"
+                            component={renderField} label="Name"
+                            validate={[required, maxLength15]}
+                            value={this.props.name || ''}
+                            onChange={this.changeName}
+                        />
+                        <Field name="subject" type="text"
+                            component={renderField} label="Subject"
+                            validate={[required, maxLength15]}
+                            value={this.props.subject || ''}
+                            onChange={this.changeSubject}
+                        />
+                        <Field name="email" type="email"
+                            component={renderField} label="Email"
+                            validate={[required, emails]}
+                            value={this.props.email || ''}
+                            onChange={this.changeEmail}
+                        />
+                        <Field name="comment" type="textbox"
+                            component={renderTextArea} label="Comment"
+                            validate={[required, maxLength55]}
+                            value={this.props.comment || ''}
+                            onChange={this.changeComment}
+                        />
 
-                                    <button type="submit" disabled={!this.props.valid}>Submit</button>
-                                </fieldset>
+                        <button type="submit" className="button" disabled={!this.props.valid}>Enviar</button>
+                    </fieldset>
 
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                </form>
+
+            </section>
         );
     }
 }

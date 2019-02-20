@@ -7,9 +7,9 @@ const Footer = ({ appName }) => {
       <h3 className="footer-sections">{appName}</h3>
       <span>Mis redes sociales:</span>
       <section id="social" className="delete-style">
-        <li class="zocial-twitter footer-socialogin"></li>
-        <li class="zocial-facebook footer-socialogin"></li>
-        <li class="zocial-instagram footer-socialogin"></li>
+        <li className="zocial-twitter footer-socialogin" tabIndex="0"></li>
+        <li className="zocial-facebook footer-socialogin" tabIndex="0"></li>
+        <li className="zocial-instagram footer-socialogin" tabIndex="0"></li>
       </section>
 
     </footer>

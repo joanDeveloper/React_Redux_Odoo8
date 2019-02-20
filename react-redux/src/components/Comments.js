@@ -48,6 +48,7 @@ class Comments extends React.Component {
             }
         };
     }
+   
     render() {
         console.log("COMMEN-----TS", this.props)
         return (

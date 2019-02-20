@@ -313,7 +313,7 @@ input[id^="spoiler"]:checked + label + .spoiler {
 .device-detail {
   list-style: none;
   margin-top: 2.5%;
-  margin-left: 15%; }
+  margin-left: 8%; }
 
 .device-detail_list {
   margin-bottom: 12%; }
@@ -341,4 +341,13 @@ input[id^="spoiler"]:checked + label + .spoiler {
   width: 95vw;
   padding: 1%;
   border-radius: 5%;
+  margin-bottom: 2%; }
+
+.form-settings {
+  background: linear-gradient(45deg, #cedbe9 0%, #aac5de 12%, #6199c7 20%, #3a84c3 51%, #419ad6 59%, #4bb8f0 71%, #3a8bc2 84%, #26558b 100%);
+  padding: 1%; }
+
+.input-form {
+  width: 75vw;
+  padding: 1%;
   margin-bottom: 2%; }

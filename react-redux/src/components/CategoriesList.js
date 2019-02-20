@@ -14,7 +14,7 @@ const CategoriesList = props => {
         props.categories.map(categories => {
           return (
             
-              <Link to={`/devices/category/${categories.name}`} className="categories" key={categories.name}>
+              <Link to={`/devices/category/${categories.name}`} className="categories" key={categories.name} tabIndex="0">
                 <span className="button font-family__coiny"><span>{categories.name}</span> </span>
               </Link>
             
