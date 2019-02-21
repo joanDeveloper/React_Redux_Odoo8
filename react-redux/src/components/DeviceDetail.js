@@ -29,7 +29,7 @@ const Device = props => {
             {
                 props.device.map(device => {
                     return (
-                        <div key={device.slug}>
+                        <section key={device.slug}>
                             <section className="container-flex">
                                 <article>
                                     <img src={`../../media/devices/${device.media}.png`} 
@@ -46,7 +46,7 @@ const Device = props => {
                                 </article>
                             </section>
                             <Comments id_device={device.id}/>
-                        </div>
+                        </section>
                     )
                 })
             }

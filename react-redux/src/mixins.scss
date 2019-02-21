@@ -8,10 +8,7 @@
     border-radius: 5px;
     padding: 10px;
 }
-@mixin rotate_5() {
-    transition: 1s;
-    transform:rotate(5deg);
-}
+
 
 @mixin rotate_360() {
     transition: 1s;

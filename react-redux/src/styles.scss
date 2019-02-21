@@ -2,9 +2,21 @@
 @import './variables.scss';
 @import './mixins.scss';
 
+/*
+* 1. GENERAL - Utilidades para gastar a nivel de toda la aplicacion (fonts,limpiar estilo,iconos,flexbox)
+* 2. NAV - menu responsive
+* 3. BUTTONS - Show the differents buttons
+* 4. PAGINATION 
+* 5. HOME - list categories, list devices and offers
+* 6. FOOTER
+* 7. HAMBURGUER MENU - ocult hamburger svg media and detect when it checked
+* 8. DEVICE DETAIL - fix show detail
+*/
+
 /* font families */
 @import url('https://fonts.googleapis.com/css?family=Lato');
 @import url('https://fonts.googleapis.com/css?family=Coiny');
+
 /* icons */
 @import url("http://weloveiconfonts.com/api/?family=zocial");
 
@@ -58,14 +70,14 @@ body{
     .container-home>p{ width: 63vw; }
 }
 
-/* banner */
+/* BANNER */
 .banners{
     background: $color-banner;
     padding: 100px;
     color: $color-white;
 }
 
-/* nav menu */
+/* NAV */
 .container-nav{
     margin-top: 2%;
     margin-bottom: 4%;
@@ -97,7 +109,19 @@ body{
     display: none;
 }
 
-/* Button */
+@media only screen and (max-width : 640px) {
+    .nav-item{ display: none; }
+    .responsive {
+        display: block;
+        float: right;
+        cursor: pointer;
+        z-index: 10;
+    }
+}
+
+@media only screen and (min-width : 640px) { .spoiler{ display: none;} }
+
+/* BUTTONS */
 .button {
     border-radius: 10px;
     background-color: $color-button;
@@ -140,10 +164,9 @@ body{
         margin-left: 40vw;
         margin-bottom: 2%;
     }
-/* Pagination */
-.container-pagination{
-    margin-top: 0%;
-}
+
+/* PAGINATION */
+.container-pagination{ margin-top: 0%; }
 
 .page-item{
     list-style: none;
@@ -199,7 +222,7 @@ body{
     height: 20vw;
 }
 
-/* media query box */
+/* media query cajas home */
 @media (max-width: 900px) {
     .device-preview__list, .device-preview__offers { width: 30vw; }
     .container-categories{ margin-bottom: 5%; }
@@ -266,21 +289,7 @@ footer{
     margin-right: 1%;
 }
 
-//////////
-
-@media only screen and (max-width : 640px) {
-    .nav-item{ display: none; }
-    .responsive {
-        display: block;
-        float: right;
-        cursor: pointer;
-        z-index: 10;
-    }
-
-}
-
-@media only screen and (min-width : 640px) { .spoiler{ display: none;} }
-
+/* HAMBURGUER MENU */
 /* Ocultar boton radio */
 input[id^="spoiler"]{ display: none; }
 
@@ -304,7 +313,8 @@ input[id^="spoiler"]:checked + label + .spoiler{
     height: auto;
     opacity: 1;
 }
-/////////
+
+/* DEVICE DETAIL */
 .device-list__color{ color:$color-black; }
 .device-list__price{
     margin-top: 5%;
@@ -324,7 +334,7 @@ input[id^="spoiler"]:checked + label + .spoiler{
    width: 35vw;
    height: 35vw;
 }
-
+/* media query device */
 @media only screen and (max-width : 640px) {
     .device-media{
         width: 60vw;
@@ -346,7 +356,7 @@ input[id^="spoiler"]:checked + label + .spoiler{
     margin-bottom: 10%;
 }
 
-/* forms */
+/* FORMS */
 .form-control{
     width: 95vw;
     padding: 1%;

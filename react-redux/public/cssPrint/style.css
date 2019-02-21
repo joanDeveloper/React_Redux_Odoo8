@@ -1,6 +1,6 @@
 
 @media print {
-    .device-preview__offers{
-        background: blue;
+    .title-principal{
+        font-size: 2px;
     }
 }  

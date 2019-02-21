@@ -124,7 +124,7 @@ const LoggedInView = props => {
 class Header extends React.Component {
   render() {
     return (
-      <section className="">
+      <section>
         <LoggedOutView currentUser={this.props.currentUser} />
         <LoggedInView currentUser={this.props.currentUser} />
       </section>

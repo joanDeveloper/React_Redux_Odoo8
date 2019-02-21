@@ -11,25 +11,25 @@ const mapStateToProps = state => ({
 
 const MainView = props => {
   return (
-    <span>
+    <section>
       <IntegrationDownshift token={props.token} />
       <section>
         <h1 align="center" className="title-principal">Nuestros servicios</h1>
-        <aside className="container-home">
+        <section className="container-home">
           <img src="../../media/home/dis1.svg" width="150" height="150" alt=""/>
           <p className="content-home">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
           Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
           Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
             </p>
-        </aside>
+        </section>
 
-        <aside className="container-home">
+        <section className="container-home">
           <img src="../../media/home/dis2.svg" width="150" height="150" alt=""/>
           <p className="content-home">Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
           Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
           Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem
             </p>
-        </aside>
+        </section>
       </section>
       <section className="container-categories">
         <CategoriesList
@@ -45,7 +45,7 @@ const MainView = props => {
           currentPage={props.currentPage} />
       </section>
       <Offers device={props.devices} token={props.token} />
-    </span>
+    </section>
   );
 };
 

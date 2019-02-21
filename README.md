@@ -22,3 +22,15 @@
     10. Optimization Credentials in backend odoo
     11. Connect and adapt odoo backend to make requests
     12. Device's Comments
+
+- CSS:
+    1. scss ( mixins, variables, media queries, transforms, animations )
+    2. fonts ( body:Lato,title-principal and menu:Coiny ) -> http://www.weloveiconfonts.com/
+    3. icons ( footer:social networks ) -> http://www.weloveiconfonts.com/
+    4. forms -> src/components/Settings, src/components/Comments
+    5. responsive -> Home, Detail(flexbox)
+    6. animations -> home list, offers (mixins)
+    7. metodology BEM
+    8. media svg in home
+    9. menu responsive -> src/components/Header
+    10. Accessibility -> alt images, tabIndex in home,nav,footer, label in form Setting and Comment 
