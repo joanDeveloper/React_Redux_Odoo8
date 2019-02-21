@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import agent from '../agent';
 import { connect } from 'react-redux';
 import  Comments from './Comments';

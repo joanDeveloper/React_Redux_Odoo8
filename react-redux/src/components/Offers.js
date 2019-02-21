@@ -12,7 +12,7 @@ const Offers = props => {
             <span>
                 <h2 align="center">Nuestras ofertas</h2>
                 {
-                    props.offers.filter(item => item.oferta != false).map(prod => {
+                    props.offers.filter(item => item.oferta !== false).map(prod => {
                         return (
                             <section className="container-device" key={prod.slug}>
                                 <DevicePreview device={prod} class="device-preview__offers" />

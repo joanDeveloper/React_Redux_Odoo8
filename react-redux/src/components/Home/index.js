@@ -1,4 +1,3 @@
-import Banner from './Banner';
 import MainView from './MainView';
 import React from 'react';
 import agent from '../../agent';
@@ -9,7 +8,6 @@ import {
   APPLY_TAG_FILTER,
   HOME_OFFERS
 } from '../../constants/actionTypes';
-import AlertDialogSlide from '../Dialog';
 import DemoCarousel from '../Carousel';
 
 const Promise = global.Promise;
@@ -36,7 +34,6 @@ const mapDispatchToProps = dispatch => ({
 
 class Home extends React.Component {
   componentWillMount() {
-    console.log("token home", this.props)
     const tab = this.props.token ? 'all' : 'feed';
     const devicesPromise = this.props.token ?
       agent.Devices.all :
@@ -48,7 +45,7 @@ class Home extends React.Component {
   componentWillUnmount() {
     this.props.onUnload();
   }
-  //<Banner appName={this.props.appName} /> <AlertDialogSlide />
+
   render() {
     return (
       <section className="home-page">

@@ -36,7 +36,7 @@ const LoggedOutView = props => {
           </Link>
         </li>
         <input type="checkbox" id="spoiler1"></input>
-        <label htmlFor="spoiler1"><img src={`./menu/menu.svg`} width="20" height="20" className="responsive"></img></label>
+        <label htmlFor="spoiler1"><img src={`./menu/menu.svg`} width="20" height="20" alt="menu responsive" className="responsive"/></label>
         <nav className="spoiler container-flex__column" style={{ width: "33%" }}>
           <li className="nav-item" id="nav-item">
             <img

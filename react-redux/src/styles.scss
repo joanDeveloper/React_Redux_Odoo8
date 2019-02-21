@@ -186,7 +186,7 @@ body{
 }
 .page-link{
     text-decoration: none;
-    box-shadow: 1px 1px 1px 1px grey;
+    box-shadow: 1px 1px 1px 1px $color-grey;
     padding: 75%;
     border-radius: 5px;
     border: none;
@@ -365,7 +365,7 @@ input[id^="spoiler"]:checked + label + .spoiler{
     
 }
 .form-settings{
-    background:  linear-gradient(45deg, rgba(206,219,233,1) 0%,rgba(170,197,222,1) 12%,rgba(97,153,199,1) 20%,rgba(58,132,195,1) 51%,rgba(65,154,214,1) 59%,rgba(75,184,240,1) 71%,rgba(58,139,194,1) 84%,rgba(38,85,139,1) 100%);
+    background: $color-form;
     padding: 1%;
 }
 .input-form{

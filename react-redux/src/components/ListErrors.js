@@ -8,14 +8,7 @@ class ListErrors extends React.Component {
         <ul className="error-messages">
           {
             Object.keys(errors).map(key => {
-              if (key === "message") {
-                return (
-                  <li key={key}>
-                    {key}: {errors[key]}
-                  </li>
-                );
-              }
-
+              if (key === "message") return (<li key={key}>{key}: {errors[key]}</li>);
             })
           }
         </ul>

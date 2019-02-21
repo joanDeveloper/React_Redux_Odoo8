@@ -4,22 +4,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { APP_LOAD, REDIRECT } from '../constants/actionTypes';
 import { Route, Switch } from 'react-router-dom';
-import Article from '../components/Article';
 import Device from '../components/DeviceDetail';
 import DevicesByCategory from '../components/DevicesByCategory';
-import Editor from '../components/Editor';
 import Home from '../components/Home';
 import Contact from '../components/Contact';
 import Login from '../components/Login';
-import Profile from '../components/Profile';
-import ProfileFavorites from '../components/ProfileFavorites';
 import Register from '../components/Register';
 import Settings from '../components/Settings';
 import { store } from '../store';
 import Footer from '../components/Home/Footer';
-import AlertDialogSlide from '../components/Dialog';
 import { push } from 'react-router-redux';
-import  "../styles.css";
+import "../styles.css";
 
 const mapStateToProps = state => {
   return {
@@ -48,8 +43,7 @@ class App extends React.Component {
 
   componentWillMount() {
     const token = window.localStorage.getItem('jwt');
-     console.log("TOKEN APP",token);
-     this.props.onLoad(token ? agent.User.current(token) : null, token);
+    this.props.onLoad(token ? agent.User.current(token) : null, token);
 
   }
 
@@ -66,13 +60,8 @@ class App extends React.Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/contact" component={Contact} />
-            <Route path="/editor/:slug" component={Editor} />
-            <Route path="/editor" component={Editor} />
-            <Route path="/article/:id" component={Article} />
             <Route path="/device/:slug" component={Device} />
             <Route path="/settings" component={Settings} />
-            <Route path="/@:username/favorites" component={ProfileFavorites} />
-            <Route path="/@:username" component={Profile} />
           </Switch>
 
           <Footer appName={this.props.appName} />
